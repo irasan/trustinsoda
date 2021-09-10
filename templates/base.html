@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Put all dependancies here -->
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <!-- Navbar here -->
+
+        <!-- Example of linking pages (look for def function names in app.py) -->
+        <li><a href="{{ url_for('home') }}">Home</a></li> 
+    </header>
+
+    <section>
+        <!-- Section for messages -->
+    </section>
+    
+    <!-- This is the section where content of each page goes
+    Container can be removed if needed -->
+    <main class="container"> 
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Will there be any footer? -->
+    </footer>
+
+    <!-- Scripts here -->
+</body>
+</html>
