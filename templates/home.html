@@ -2,5 +2,8 @@
 {% block content %}
 
 <!-- Home page content goes here -->
-
+    {% for p in profile %}
+    {{ p.name }}<br>
+    {{ p.is_employer }}
+    {% endfor %}
 {% endblock %}
