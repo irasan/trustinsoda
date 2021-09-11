@@ -29,6 +29,16 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/login_employee")
+def login_employee():
+    return render_template("login_employee.html")
+
+
+@app.route("/login_employer")
+def login_employer():
+    return render_template("login_employer.html")
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")
