@@ -24,6 +24,10 @@ def home():
     profile = mongo.db.jobseekers.find()
     return render_template("home.html", profile=profile)
 
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 @app.route("/about")
 def about():
