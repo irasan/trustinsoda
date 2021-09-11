@@ -25,31 +25,84 @@ def home():
     return render_template("home.html", profile=profile)
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/employee_register", methods=["GET", "POST"])
+def employee_register():
     if request.method == "POST":
         # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+        existing_user = mongo.db.jobseekers.find_one(
+            {"email": request.form.get("email").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Account with such an email is already registered")
             return redirect(url_for("register"))
+        
+        sector = request.form.get("sector")
+        if sector == "other":
+            sector = request.form.get("sector_other")
 
-        if (request.form.get("password") == request.form.get("password1")):
+        if (request.form.get("password1") == request.form.get("password2")):
             register = {
-                "username": request.form.get("username").lower(),
+                "full_name": request.form.get("full_name").lower(),
                 "password": generate_password_hash(
-                    request.form.get("password"))
-                # "is_employer":
+                    request.form.get("password1")),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "city": request.form.get("city").lower(),
+                "country": request.form.get("country").lower(),
+                "description": request.form.get("description"),
+                "sector": sector,
+                "experience": request.form.get("experience1"),
+                "education": request.form.get("education1"),
+                "contact_preference": request.form.get("contact_preference"),
+                "accommodations": request.form.get("accommodations"),
+                "is_employer": False
             }
-            mongo.db.users.insert_one(register)
+            mongo.db.jobseekers.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+        return redirect(url_for("home"))
+        # return redirect(url_for("profile", username=session["user"]))
+    return render_template("employee_register.html")
+
+
+@app.route("/employer_register", methods=["GET", "POST"])
+def employer_register():
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.companies.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_user:
+            flash("This company is already registered")
+            return redirect(url_for("register"))
+
+        if (request.form.get("password1") == request.form.get("password2")):
+            register = {
+                "full_name": request.form.get("full_name").lower(),
+                "company_name": request.form.get("company_name").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password1")),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "city": request.form.get("city").lower(),
+                "country": request.form.get("country").lower(),
+                "is_employer": True
+            }
+            mongo.db.companies.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("email").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("home"))
+        # return redirect(url_for("profile", username=session["user"]))
+    return render_template("employer_register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
