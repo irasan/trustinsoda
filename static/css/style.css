@@ -10,6 +10,10 @@ body {
 
 /* header */
 
+header {
+    text-align: center;
+}
+
 header h1 {
     font-size: 300%;
     font-weight: bold;
@@ -42,12 +46,11 @@ footer a {
     text-align: center;
     font-weight: bold;
     font-size: 160%;
-}
+    background-color: #C3D6E7;
+    /* background-image:linear-gradient(to right, #C3D6E7, #DCC3E8); */
+};
 
-@media only screen and (min-width: 600px) {
-    .card {
-        width: 10rems;
-    }
+img {
+    max-width: 20%;
 }
-
 

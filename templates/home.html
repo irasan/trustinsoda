@@ -1,25 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid center">
     <div class="row justify-content-around">
-      <div class="col- col-sm-2 col-md-4 col-lg-6">
+      <div class="col- col-sm-2 col-md-4 col-lg-6 center">
         <div>
             <p class="card">click the button below to start creating your Employee profile.</p>
         </div>
         <div>
-            <!-- <button></button> -->
+            <p class="card"><button class="bg-btn-home">Click here!</button></p>
         </div>
       </div>
-      <div class= "col- col-sm-2 col-md-4 col-lg-6">
+      <div class= "col- col-sm-2 col-md-4 col-lg-6 enter">
         <div>
             <p class="card">click the button below to start creating your Employer profile.</p>
         </div>
         <div>
-            <!-- <button></button> -->
+            <p class="card"><button class="bg-btn-home">Click here!</button></p>
         </div>
       </div>
     </div>
-  </div>
+</div>
+<div>
+    <div class="row">
+        <div class="col-sm-4 center">
+            <img src="static/images/girl-one.jpg" class="img-fluid max-width: 20% rounded float-left" alt="">
+        </div>
+        <div class="col-sm-4 center">
+            <img src="static/images/girl-two.jpg" class="img-fluid max-width: 20% rounded float-left" alt="">
+        </div>
+        <div class="col-sm-4 center">
+            <img src="static/images/girl-three.jpg" class="img-fluid max-width: 20% rounded float-left" alt="">
+        </div>
+        
+    
+    </div>
+</div>
+
+
 <!-- Home page content goes here -->
     {% for p in profile %}
     {{ p.name }}<br>
