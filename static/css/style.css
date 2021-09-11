@@ -8,3 +8,17 @@
 .about-info {
     text-align: center;
 }
+
+/* EMPLOYEE SIGN UP PAGE */
+
+form {
+    border: 1px solid rgb(41, 37, 37);
+    margin: 10px 0;
+    padding: 1rem;
+}
+
+.next-page {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
