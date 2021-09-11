@@ -9,6 +9,10 @@ body {
     background-image:linear-gradient(to right, #C3D6E7, #DCC3E8);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* header */
 
 header {
@@ -84,7 +88,23 @@ footer a {
 /* home page */
 
 .container {
-    margin-top: 5rem;
+    margin-top: 1rem;
+}
+
+.home-cards {
+    text-align: center;
+
+}
+
+.space {
+    height: 10vh;
+}
+
+#intro-contents {
+    width: 85%;
+    border: 1px solid black;
+    text-align: center;
+    margin: 5% auto;
 }
 
 /* cards */
@@ -95,12 +115,14 @@ footer a {
     font-weight: bold;
     font-size: 160%;
     background-color: #C3D6E7;
+    margin: 19px auto;
+    padding: 5%;
 };
 
 /* images */
 
-#img-container {
-    margin-top: 5rem;
+#image-box {
+    margin-top: 5%;
 }
 
 
