@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" id="employee-reg-container">
+  <h2>Welcome to <em>Our site name</em></h2>
+  <h3>Please enter your details carefully</h3>
+
+  <p>If you would rather sign up using our friendly AI chatbot, please do so <a href=#>here</a>. <br>
+    Otherwise, please continue below.</p>
+
+
+  <div id="employee-form-container">
+
+    <form id="employee-form-page-1">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="name" class="form-control" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="number">Contact Number</label>
+        <input type="number" class="form-control" id="number" required>
+      </div>
+
+      <div class="form-group" id="location-form">
+        <span>
+          <label for="city">Location</label>
+          <input type="text" class="form-control" id="city" placeholder="CITY" required>
+        </span>
+        <span>
+          <input type="text" class="form-control" id="country" placeholder="COUNTRY" required>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Create Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword2">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+    </form>
+
+    <form id="employee-form-page-2">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Tell us a bit about yourself</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <p> What area are you looking for work in? </p>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="retail-btn" name="retail-btn" class="custom-control-input">
+        <label class="custom-control-label" for="retail-btn">Retail</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="admin-btn" name="admin-btn" class="custom-control-input">
+        <label class="custom-control-label" for="admin-btn">Admin</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="hospo-btn" name="hospo-btn" class="custom-control-input">
+        <label class="custom-control-label" for="hosp-btn">Hospitality</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="it-btn" name="it-btn" class="custom-control-input">
+        <label class="custom-control-label" for="it-btn">I.T.</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="other-btn" name="other-btn" class="custom-control-input">
+        <label class="custom-control-label" for="other-btn">Other</label>
+      </div>
+      <div class="form-group">
+        <label for="work-box">Enter job type below:</label>
+        <input type="text" class="form-control" id="work-box" required>
+      </div>
+
+      <p>Have you work experience in this area?</p>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="yes-btn-1" name="yes-btn-1" class="custom-control-input">
+        <label class="custom-control-label" for="yes-btn-1">Yes</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="no-btn-1" name="no-btn-1" class="custom-control-input">
+        <label class="custom-control-label" for="no-btn-1">No</label>
+      </div>
+      <div class="form-group">
+        <label for="work-experience-box">Enter experience below:</label>
+        <input type="text" class="form-control" id="work-experience-box" required>
+      </div>
+
+      <p>Have you other training or experiences relevant to this job?</p>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="yes-btn-2" name="yes-btn-2" class="custom-control-input">
+        <label class="custom-control-label" for="yes-btn-2">Yes</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="no-btn-2" name="no-btn-2" class="custom-control-input">
+        <label class="custom-control-label" for="no-btn-2">No</label>
+      </div>
+      <div class="form-group">
+        <label for="other-experience-box">Enter experience below:</label>
+        <input type="text" class="form-control" id="other-experience-box" required>
+      </div>
+      
+
+      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+    </form>
+
+    <form id="employee-form-page-3">
+      <p>Would you like a potential employer to contact you via phone or email?</p>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="phone-radio" name="phone-radio" class="custom-control-input">
+        <label class="custom-control-label" for="phone-radio">Phone</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="email-radio" name="email-radio" class="custom-control-input">
+        <label class="custom-control-label" for="email-radio">Email</label>
+      </div>
+
+      <div class="form-group">
+        <label for="supports-box">Finally, are there any accommodations you need for the interview or workplace?</label>
+        <textarea class="form-control" id="supports-box" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary next-page">Submit Registration!</button>
+    </form>
+  </div>
+
+
+</div>
+
+{% endblock %}
