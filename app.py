@@ -35,6 +35,10 @@ def employee_register():
     return render_template("employee_register.html")
 
 
+@app.route("/employer_register")
+def employer_register():
+    return render_template("employer_register.html")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
