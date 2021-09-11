@@ -17,8 +17,11 @@
 <body>
 
     <header>
+      <div id="header" class="main-gradient">
+        <h1>As Yet Unamed</h1>
+      
         <!-- Navbar here -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -42,6 +45,7 @@
                 </li>
               </ul>
             </div>
+          </div>
           </nav>
 
         <!-- Example of linking pages (look for def function names in app.py) -->
@@ -69,8 +73,29 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <!-- Will there be any footer? -->
+    <footer class="footer">
+        <div class="main-gradient">
+          <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler">
+            </button>
+            <div class="navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                copyright: As yet unnamed 2021
+              </span>
+            </div>
+          </nav>
+        </div>
     </footer>
 
     <!-- Scripts here -->
