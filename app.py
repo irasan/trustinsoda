@@ -35,9 +35,37 @@ def employee_register():
     return render_template("employee_register.html")
 
 
-@app.route("/employer_register")
+@app.route("/employer_register", methods=["GET", "POST"])
 def employer_register():
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.companies.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_user:
+            flash("This company is already registered")
+            return redirect(url_for("register"))
+
+        if (request.form.get("password1") == request.form.get("password2")):
+            register = {
+                "full_name": request.form.get("full_name").lower(),
+                "company_name": request.form.get("company_name").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password1")),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "city": request.form.get("city").lower(),
+                "country": request.form.get("country").lower(),
+                "is_employer": True
+            }
+            mongo.db.companies.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("email").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("home"))
     return render_template("employer_register.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
