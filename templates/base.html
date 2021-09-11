@@ -49,8 +49,17 @@
     </header>
 
     <section>
-        <!-- Section for messages -->
-    </section>
+      <!-- flash messages -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="row">
+                <h4>{{ message }}</h4>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+  </section>
 
     <!-- This is the section where content of each page goes
     Container can be removed if needed -->

@@ -5,45 +5,45 @@
     <h2>Welcome to <em>Our site name</em></h2>
     <h3>Please enter your details carefully</h3>
 
-    <form id="employer-reg-form">
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="name" class="form-control" id="name" required>
-          </div>
+    <form id="employer-reg-form" method="POST">
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" required>
+      </div>
 
-          <div class="form-group">
-            <label for="c-name">Company Name</label>
-            <input type="c-name" class="form-control" id="c-name" required>
-          </div>
+      <div class="form-group">
+        <label for="company_name">Company Name</label>
+        <input type="text" class="form-control" id="company_name" name="company_name" required>
+      </div>
           
       <div class="form-group">
-        <label for="e-mail-address">Email address</label>
-        <input type="email" class="form-control" id="e-mail-address" required>
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
 
       <div class="form-group">
         <label for="number">Contact Number</label>
-        <input type="number" class="form-control" id="number" required>
+        <input type="text" class="form-control" id="phone" name="phone" required>
       </div>
 
       <div class="form-group" id="location-form">
         <span>
           <label for="city">Location</label>
-          <input type="text" class="form-control" id="city" placeholder="CITY" required>
+          <input type="text" class="form-control" id="city" name="city" placeholder="CITY" required>
         </span>
         <span>
-          <input type="text" class="form-control" id="country" placeholder="COUNTRY" required>
+          <input type="text" class="form-control" id="country" name="country" placeholder="COUNTRY" required>
         </span>
       </div>
 
       <div class="form-group">
-        <label for="create-password">Create Password</label>
-        <input type="password" class="form-control" id="create-password" required>
+        <label for="password1>Create Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" required>
       </div>
 
       <div class="form-group">
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" class="form-control" id="confirm-password" required>
+        <label for="password2">Confirm Password</label>
+        <input type="password" class="form-control" id="password2" name="password2" required>
       </div>
 
       <button type="submit" class="btn btn-primary next-page">Submit Registration</button>
