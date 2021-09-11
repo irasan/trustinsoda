@@ -4,6 +4,10 @@ body {
     background-image: linear-gradient(to right, #EDE6F5, #E8C5D1);
 }
 
+.main-gradient {
+    background-image:linear-gradient(to right, #C3D6E7, #DCC3E8);
+}
+
 /* header */
 
 header h1 {
@@ -12,9 +16,7 @@ header h1 {
     margin-left: 20px;
 }
 
-.main-gradient {
-    background-image:linear-gradient(to right, #C3D6E7, #DCC3E8);
-}
+/* footer */
 
 .footer {
         position: absolute;
@@ -26,3 +28,26 @@ header h1 {
 footer a {
     color: black;
 }
+
+/* home page */
+
+.container {
+    margin-top: 5rem;
+}
+
+/* cards */
+
+.card {
+    width: 18rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 160%;
+}
+
+@media only screen and (min-width: 600px) {
+    .card {
+        width: 10rems;
+    }
+}
+
+

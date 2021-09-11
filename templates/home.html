@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="container-fluid">
+    <div class="row justify-content-around">
+      <div class="col- col-sm-2 col-md-4 col-lg-6">
+        <div>
+            <p class="card">click the button below to start creating your Employee profile.</p>
+        </div>
+        <div>
+            <!-- <button></button> -->
+        </div>
+      </div>
+      <div class= "col- col-sm-2 col-md-4 col-lg-6">
+        <div>
+            <p class="card">click the button below to start creating your Employer profile.</p>
+        </div>
+        <div>
+            <!-- <button></button> -->
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- Home page content goes here -->
     {% for p in profile %}
     {{ p.name }}<br>
