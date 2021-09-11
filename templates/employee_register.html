@@ -18,8 +18,8 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" required>
+        <label for="email-address">Email address</label>
+        <input type="email" class="form-control" id="email-address" required>
       </div>
 
       <div class="form-group">
@@ -38,22 +38,23 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleInputPassword1">Create Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" required>
+        <label for="create-password">Create Password</label>
+        <input type="password" class="form-control" id="create-password" required>
       </div>
 
       <div class="form-group">
-        <label for="exampleInputPassword2">Confirm Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" required>
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" required>
       </div>
 
-      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+      <button type="button" class="btn btn-primary next-page" id="form-b-1">Next Page</button>
+        <p class="page-count">Page 1 of 3</p>
     </form>
 
     <form id="employee-form-page-2">
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Tell us a bit about yourself</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="info-area">Tell us a bit about yourself</label>
+        <textarea class="form-control" id="info-area" rows="3"></textarea>
       </div>
 
       <p> What area are you looking for work in? </p>
@@ -109,10 +110,12 @@
         <label for="other-experience-box">Enter experience below:</label>
         <input type="text" class="form-control" id="other-experience-box" required>
       </div>
-      
 
-      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+
+      <button type="button" class="btn btn-primary next-page" id="form-b-2">Next Page</button>
+      <p class="page-count">Page 2 of 3</p>
     </form>
+    
 
     <form id="employee-form-page-3">
       <p>Would you like a potential employer to contact you via phone or email?</p>
@@ -130,8 +133,16 @@
         <textarea class="form-control" id="supports-box" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary next-page">Submit Registration!</button>
+      <button type="submit" class="btn btn-primary next-page" id="form-b-3">Submit Registration!</button>
+      <p class="page-count">Page 3 of 3</p>
     </form>
+  </div>
+
+  <div class="container" id="success-box">
+    <p class="success-message">
+      Success! Your registration is complete. <br> 
+      View your profile <a href=#>here</a> or logout <a href=#>here</a>.
+    </p>
   </div>
 
 

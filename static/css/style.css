@@ -22,3 +22,7 @@ form {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.success-message{
+    border: 1px solid green;
+}
