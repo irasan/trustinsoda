@@ -23,6 +23,7 @@ header h1 {
     font-size: 300%;
     font-weight: bold;
     margin-left: 20px;
+    padding-top: 3vh;
 }
 
 /* footer */
@@ -97,7 +98,7 @@ footer a {
 }
 
 .space {
-    height: 10vh;
+    height: 5vh;
 }
 
 #intro-contents {
@@ -105,6 +106,8 @@ footer a {
     border: 1px solid black;
     text-align: center;
     margin: 5% auto;
+    background-color: #C3D6E7;
+    font-weight: 700;
 }
 
 /* cards */
@@ -117,6 +120,7 @@ footer a {
     background-color: #C3D6E7;
     margin: 19px auto;
     padding: 5%;
+    border: 1px solid black;
 };
 
 /* images */
@@ -125,6 +129,12 @@ footer a {
     margin-top: 5%;
 }
 
+.img-fluid {
+    max-width: 85%;
+    height: auto;
+    background-color: #DCC3E8;
+    border: 1px solid black;
+}
 
 /* ABOUT PAGE */
 
