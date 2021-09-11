@@ -47,7 +47,8 @@
         <input type="password" class="form-control" id="password2" name="password2" required>
       </div>
 
-      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+      <button type="button" class="btn btn-primary next-page" id="form-b-1">Next Page</button>
+        <p class="page-count">Page 1 of 3</p>
     </form>
 
     <form id="employee-form-page-2">
@@ -109,10 +110,12 @@
         <label for="other-experience-box">Enter experience below:</label>
         <input type="text" class="form-control" id="other-experience-box" required>
       </div>
-      
 
-      <button type="submit" class="btn btn-primary next-page">Next Page</button>
+
+      <button type="button" class="btn btn-primary next-page" id="form-b-2">Next Page</button>
+      <p class="page-count">Page 2 of 3</p>
     </form>
+    
 
     <form id="employee-form-page-3">
       <p>Would you like a potential employer to contact you via phone or email?</p>
@@ -130,9 +133,18 @@
         <textarea class="form-control" id="accommodations" name="accommodations" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary next-page">Submit Registration!</button>
+      <button type="submit" class="btn btn-primary next-page" id="form-b-3">Submit Registration!</button>
+      <p class="page-count">Page 3 of 3</p>
     </form>
   </div>
+
+  <div class="container" id="success-box">
+    <p class="success-message">
+      Success! Your registration is complete. <br> 
+      View your profile <a href=#>here</a> or logout <a href=#>here</a>.
+    </p>
+  </div>
+
 
 </div>
 
