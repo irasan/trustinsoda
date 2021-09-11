@@ -47,10 +47,11 @@ footer a {
     font-weight: bold;
     font-size: 160%;
     background-color: #C3D6E7;
-    /* background-image:linear-gradient(to right, #C3D6E7, #DCC3E8); */
 };
 
-img {
-    max-width: 20%;
+/* images */
+
+#img-container {
+    margin-top: 5rem;
 }
 
