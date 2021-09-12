@@ -33,3 +33,5 @@ const inputList = {
   "contact": '<input type="text" class="form-control current-input" id="contact" required>',
   "accom": '<textarea class="form-control current-input" id="accommodations" name="accommodations" rows="3"></textarea>',
 };
+
+const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
