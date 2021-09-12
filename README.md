@@ -19,7 +19,7 @@ As our MVP we aim to:
 * Create a site that allows possible access arrangements to the work place and the interview to be arrange.
 
 
-##### To achieve these goals I will need to:
+### To achieve these goals I will need to:
 * Create a website with good accesbility
 * Easy to understand site structure and flow
 * Ensure the sign up section is clear and easy to find
