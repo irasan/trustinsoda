@@ -71,25 +71,15 @@ footer a {
     color: black;
 }
 
-.devs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .dev {
-    display: flex;
-    align-items: center;
     text-align: center;
+    display: inline;
 }
 
 .dev-icon {
-    width: 10%;
-    height: 10%;
+    width: 60px;
+    height: auto;
     border-radius: 50%;
-    margin: 20px;
-    padding: 0;
     background-color: black;
 }
 
@@ -105,7 +95,6 @@ footer a {
 #foot-list {
     list-style-type: none;
     text-decoration: none;
-    margin-top: 25%;
 }
 
 #foot-list>li {
@@ -114,9 +103,9 @@ footer a {
     line-height: 1.5rem;
 }
 
-#cright {
+.cright {
     text-align: center;
-    margin: 20% 15% 0 0;
+    margin: 0 auto;
 }
 
 /* home page */
@@ -262,6 +251,10 @@ form {
 @media screen and (max-width: 640px)  {
     .card-404 {
         width: 90%;
+    }
+
+    .dev-icon {
+        width: 30px;
     }
 }
 /* CONTACT PAGE */
