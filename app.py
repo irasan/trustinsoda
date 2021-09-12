@@ -228,6 +228,12 @@ def employee_profile(username):
 
     return redirect(url_for("login"))
 
+@app.route("/candidates")
+def candidates():
+    candidates = mongo.db.jobseekers.find()
+    return render_template("candidates.html", candidates=candidates)
+
+
 
 @login_required
 @app.route("/employer_update/<username>", methods=["GET", "POST"])
