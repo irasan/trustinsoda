@@ -11,7 +11,7 @@
 
   <div id="employee-form-container">
 
-    <form id="employee-form-page-1">
+    <form id="employee-form-page-1" method="POST" action="/register">
       <div class="form-group">
         <label for="full_name">Full Name</label>
         <input type="text" class="form-control" id="full_name" name="full_name" required>
@@ -46,12 +46,11 @@
         <label for="password2">Confirm Password</label>
         <input type="password" class="form-control" id="password2" name="password2" required>
       </div>
-
-      <button type="button" class="btn btn-primary next-page" id="form-b-1">Next Page</button>
+      <button type="button" onclick="save_part1" class="btn btn-primary next-page" id="form-b-1" name="form-b-1">Next Page</button>
         <p class="page-count">Page 1 of 3</p>
     </form>
 
-    <form id="employee-form-page-2">
+    <form id="employee-form-page-2" method="POST">
       <div class="form-group">
         <label for="description">Tell us a bit about yourself</label>
         <textarea class="form-control" id="description" name="description" rows="3"></textarea>
@@ -59,28 +58,28 @@
 
       <p> What area are you looking for work in? </p>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="retail-btn" name="retail-btn" class="custom-control-input">
+        <input type="radio" id="retail-btn" name="sector" value="retail" class="custom-control-input">
         <label class="custom-control-label" for="retail-btn">Retail</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="admin-btn" name="admin-btn" class="custom-control-input">
+        <input type="radio" id="admin-btn" name="sector" value="admin" class="custom-control-input">
         <label class="custom-control-label" for="admin-btn">Admin</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="hospo-btn" name="hospo-btn" class="custom-control-input">
+        <input type="radio" id="hospo-btn" name="sector" value="hospitality" class="custom-control-input">
         <label class="custom-control-label" for="hosp-btn">Hospitality</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="it-btn" name="it-btn" class="custom-control-input">
+        <input type="radio" id="it-btn" name="sector" value="IT" class="custom-control-input">
         <label class="custom-control-label" for="it-btn">I.T.</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="other-btn" name="other-btn" class="custom-control-input">
+        <input type="radio" id="other-btn" name="sector" value="other" class="custom-control-input">
         <label class="custom-control-label" for="other-btn">Other</label>
       </div>
       <div class="form-group">
         <label for="work-box">Enter job type below:</label>
-        <input type="text" class="form-control" id="work-box" required>
+        <input type="text" class="form-control" id="work-box" name="sector-other" required>
       </div>
 
       <p>Have you work experience in this area?</p>
@@ -94,7 +93,7 @@
       </div>
       <div class="form-group">
         <label for="work-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="work-experience-box" required>
+        <input type="text" class="form-control" id="work-experience-box" name="experience" required>
       </div>
 
       <p>Have you other training or experiences relevant to this job?</p>
@@ -108,23 +107,22 @@
       </div>
       <div class="form-group">
         <label for="other-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="other-experience-box" required>
+        <input type="text" class="form-control" id="other-experience-box" name="education" required>
       </div>
 
-
-      <button type="button" class="btn btn-primary next-page" id="form-b-2">Next Page</button>
+      <button type="button" class="btn btn-primary next-page" id="form-b-2" name="form-b-2">Next Page</button>
       <p class="page-count">Page 2 of 3</p>
     </form>
     
 
-    <form id="employee-form-page-3">
+    <form id="employee-form-page-3" name="employee-form-page-3" method="POST">
       <p>Would you like a potential employer to contact you via phone or email?</p>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="phone-radio" name="phone-radio" class="custom-control-input">
+        <input type="radio" id="phone-radio" name="contact_preference" value="phone" class="custom-control-input">
         <label class="custom-control-label" for="phone-radio">Phone</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="email-radio" name="email-radio" class="custom-control-input">
+        <input type="radio" id="email-radio" name="contact_preference" value="email" class="custom-control-input">
         <label class="custom-control-label" for="email-radio">Email</label>
       </div>
 
@@ -133,7 +131,7 @@
         <textarea class="form-control" id="accommodations" name="accommodations" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary next-page" id="form-b-3">Submit Registration!</button>
+      <button type="submit" class="btn btn-primary next-page" id="form-b-3" name="form-b-3">Submit Registration!</button>
       <p class="page-count">Page 3 of 3</p>
     </form>
   </div>

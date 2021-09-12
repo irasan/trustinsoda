@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-6 login-box" id="sign-in-box">
             <h2>Sign in here</h2>
-            <form>
+            <form method="POST" action="{{ url_for('login_employee') }}">
                 <div class="form-group">
                     <label for="email">E-mail Address</label>
                     <input type="email" class="form-control" id="email" name="email" required>

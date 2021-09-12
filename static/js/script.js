@@ -42,7 +42,14 @@ formB2.addEventListener('click', function(){
 formB3.addEventListener('click', function(){
     console.log("the form-b-3 button was pressed");
     employeeF3.style.display = "none";
-    successBox.style.display = "block";
+    // successBox.style.display = "block";
 });
 
+// function save_part1(){
+//     var queryString = $('#employee-form-page-1').serialize();
+// }
+
+// $.post( "/postmethod", {
+//     javascript_data: queryString 
+// });
 

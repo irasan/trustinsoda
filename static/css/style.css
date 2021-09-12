@@ -6,7 +6,7 @@ body {
 }
 
 .main-gradient {
-    background-image:linear-gradient(to right, #C3D6E7, #DCC3E8);
+    background-image: linear-gradient(to right, #C3D6E7, #DCC3E8);
 }
 
 a {
@@ -29,10 +29,10 @@ header h1 {
 /* footer */
 
 .footer {
-        bottom: 0;
-        width: 100%;
-        height: 40px;
-    }
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
 
 footer a {
     color: black;
@@ -43,48 +43,48 @@ footer a {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
-  .dev {
+.dev {
     display: flex;
     align-items: center;
     text-align: center;
-  }
+}
 
-  .dev-icon{
+.dev-icon {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 20px;
     padding: 0;
     background-color: black;
-  }
+}
 
-  .dev-icon:hover {
+.dev-icon:hover {
     border: 5px solid #007bff;
-  }
+}
 
-  .dev-name {
+.dev-name {
     text-transform: uppercase;
-    text-decoration: none ;
-  }
+    text-decoration: none;
+}
 
-  #foot-list {
-      list-style-type: none;
-      text-decoration: none;
-      margin-top: 25%;
-  }
+#foot-list {
+    list-style-type: none;
+    text-decoration: none;
+    margin-top: 25%;
+}
 
-  #foot-list>li {
-    margin: 0 ;
+#foot-list>li {
+    margin: 0;
     padding: 0;
     line-height: 1.5rem;
-  }
+}
 
-  #cright {
-      text-align: center;
-      margin: 20% 15% 0 0;
-  }
+#cright {
+    text-align: center;
+    margin: 20% 15% 0 0;
+}
 
 /* home page */
 
@@ -102,13 +102,26 @@ footer a {
 }
 
 #intro-contents {
-    width: 85%;
+    width: 100%;
+    height: 90vh;
     border: 1px solid black;
     text-align: center;
     margin: 5% auto;
     background-color: #C3D6E7;
     font-weight: 700;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url(../images/hands.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
 }
+
+#intro-contents>p{
+vertical-align: middle;
+}
+
 
 /* cards */
 
@@ -121,7 +134,7 @@ footer a {
     margin: 19px auto;
     padding: 5%;
     border: 1px solid black;
-};
+}
 
 /* images */
 
@@ -161,7 +174,7 @@ form {
     transform: translateX(-50%);
 }
 
-.success-message{
+.success-message {
     border: 1px solid green;
 }
 

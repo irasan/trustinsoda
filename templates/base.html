@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Put all dependancies here -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <!-- Bootstrap v 4.6 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -38,15 +39,15 @@
               <a class="nav-link" href="{{ url_for('home', _anchor='sign-up-box') }}">Sign Up</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ url_for('login') }}">Login</a>
             </li>
           </ul>
         </div>
     </div>
     </nav>
-
-    <!-- Example of linking pages (look for def function names in app.py) -->
-    <!-- <li><a href="{{ url_for('home') }}">Home</a></li> -->
   </header>
 
   <section>
@@ -137,8 +138,8 @@
 
         <div class="col-2">
           <p id="cright">
-          copyright <br> As yet unnamed <br> 2021
-        </p>
+            copyright <br> As yet unnamed <br> 2021
+          </p>
         </div>
 
       </div>
