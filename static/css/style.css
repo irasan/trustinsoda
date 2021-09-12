@@ -14,11 +14,14 @@ a {
 }
 
 /* flash messages  */
+.flashes {
+    background-color: black;
+}
 
 .flashes h4 {
     line-height: 2;
-    color: black;
-    text-align: center;
+    color: white;
+    margin: 0 auto;
 }
 
 /* header */

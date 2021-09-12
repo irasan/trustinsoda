@@ -70,8 +70,8 @@ def employee_register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email")
         flash("Registration Successful!")
+        return redirect(url_for("employee_profile", username=session["user"]))
 
-    # return redirect(url_for("profile", username=session["user"]))
     return render_template("employee_register.html")
 
 
@@ -103,8 +103,8 @@ def employer_register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
-        return redirect(url_for("home"))
-        # return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("employer_profile", username=session["user"]))
+
     return render_template("employer_register.html")
 
 
@@ -132,7 +132,7 @@ def login_employee():
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login_employee"))
+                return redirect(url_for("login_employee", username=name))
 
         else:
             # username doesn't exist
@@ -146,8 +146,9 @@ def login_employee():
 def login_employer():
     if request.method == "POST":
         # check if username exists in db
+        email = request.form.get("email")
         existing_user = mongo.db.companies.find_one(
-            {"email": request.form.get("email")})
+            {"email": email})
         name = existing_user["full_name"]
 
         if existing_user:
@@ -157,7 +158,7 @@ def login_employer():
                 session["user"] = request.form.get("email")
                 flash("Welcome, {}!".format(name))
                 return redirect(url_for(
-                    "employer_profile", username=session["user"]))
+                    "employer_profile", username=email))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -183,7 +184,7 @@ def logout():
 def employer_profile(username):
     if "user" in session:
         if session["user"] == username:
-            user = mongo.db.employers.find({"email": username})
+            user = mongo.db.companies.find_one({"email": username})
             return render_template(
                 "employer_profile.html", user=user)
         return redirect(url_for("home"))
@@ -195,9 +196,9 @@ def employer_profile(username):
 def jobseeker_profile(username):
     if "user" in session:
         if session["user"] == username:
-
+            user = mongo.db.jobseekers.find_one({"email": username})
             return render_template(
-                "jobseeker_profile.html")
+                "jobseeker_profile.html", user=user)
         return redirect(url_for("home"))
 
     return redirect(url_for("login"))
