@@ -31,6 +31,12 @@ $(document).ready(function () {
 
       $(".chatbox").append($(inputList[keyslist[x]]).hide().fadeIn("fast"));
 
+      $("html, body").animate(
+        {
+          scrollTop: $("html, body").get(0).scrollHeight,
+        },
+        2000
+      );
 
       return true;
     }
