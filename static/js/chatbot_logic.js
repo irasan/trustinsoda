@@ -2,7 +2,8 @@ $(document).ready(function () {
 
   $("h5").css('color', 'red');
 
-
+  let x = 0
+  let keyslist = ['full_name', 'email', 'phone', 'city', 'country', 'password1', 'password2', 'disc', 'area', 'type', 'exp', 'exp2', 'contact', 'accom']
   $('.chatbox').keypress(function (e) {
     var key = e.which;
     if (key == 13) // the enter key code
@@ -10,20 +11,28 @@ $(document).ready(function () {
       $(".current-input").click();
       let label = $(".current-input").attr("id");
 
+      x ++
+/*       console.log(labelList[x])
       var next = function (dict, key) {
-        var keys = Object.keys(dict),
-          i = keys.indexOf(key);
-        return i !== -1 && keys[i + 1];
+        var keyss = Object.keys(dict);
+          console.log(keyss);
+          i = keyss.indexOf(key);
+          console.log(i);
+        return i !== -1 && keyss[i + 1];
       };
 
-      nextLabel = next(inputList, label)
+      nextLabel = next(labelList, label)
+      nextanswer = (Object.keys(labelList)).indexOf(label)
+      console.log(nextanswer + 1) */
 
       $(".current-input").removeClass("current-input").addClass("previous-input");
 
-      $(".chatbox").append($(inputList[nextLabel]).hide().fadeIn("fast"));
+      $(".chatbox").append($(labelList[keyslist[x]]).hide().fadeIn("fast"));
+
+      $(".chatbox").append($(inputList[keyslist[x]]).hide().fadeIn("fast"));
 
 
-      return console.log(nextLabel);
+      return true;
     }
   });
 
