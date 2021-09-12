@@ -44,24 +44,24 @@ footer a {
     justify-content: center;
   }
 
-  .dev {
+.dev {
     display: flex;
     align-items: center;
     text-align: center;
-  }
+}
 
-  .dev-icon{
+.dev-icon{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 20px;
     padding: 0;
     background-color: black;
-  }
+}
 
-  .dev-icon:hover {
+.dev-icon:hover {
     border: 5px solid #007bff;
-  }
+}
 
   .dev-name {
     text-transform: uppercase;
