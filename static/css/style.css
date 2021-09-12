@@ -85,6 +85,12 @@ footer a {
     text-decoration: none;
 }
 
+@media screen and (max-width: 577px) {
+    .dev-name {
+        display: none;
+    }
+}
+
 #foot-list {
     list-style-type: none;
     text-decoration: none;
