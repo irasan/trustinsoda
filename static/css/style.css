@@ -240,11 +240,12 @@ form {
     margin-right: 0.625rem !important;
 }
 
-.img-candidate {
-    height: 100%;
-    width: 100%;
-    background-color: #007bff;
-}
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+  }
 
 @media screen and (max-width: 640px)  {
     .card-404 {
