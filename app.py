@@ -45,51 +45,33 @@ def employee_register():
             flash("Account with such an email is already registered")
             return redirect(url_for("employee_register"))
 
-        # if "form-b-1" in request.form:
-            # if (request.form.get("password1") == request.form.get("password2")):
-            #     register = {
-            #         "full_name": request.form.get("full_name"),
-            #         "password": generate_password_hash(
-            #             request.form.get("password1")),
-            #         "email": request.form.get("email"),
-            #         "phone": request.form.get("phone"),
-            #         "city": request.form.get("city").lower(),
-            #         "country": request.form.get("country").lower()
-            #     }
+        sector = request.form.get("sector")
+        if sector == "other":
+            sector = request.form.get("sector_other")
 
-                #     "description": request.form.get("description"),
-                #     "experience": request.form.get("experience"),
-                #     # "sector": sector,
-                #     "contact_preference": request.form.get("contact_preference"),
-                #     "accommodations": request.form.get("accommodations")
-                # }
-
-        # if "form-b-2" in request.form:
-        #     sector = request.form.get("sector")
-        #     if sector == "other":
-        #         sector = request.form.get("sector_other")
-        #     register2 = { "$set": {
-        #         "description": request.form.get("description"),
-        #         "sector": sector,
-        #         "experience": request.form.get("experience"),
-        #         "education": request.form.get("education")
-        #     }
-        #     }
-        #     mongo.db.jobseekers.update_one(
-        #         {"email": existing_user}, register2)
-
-        # if "form-b-3" in request.form:
-        #     register3 = {
-        #         "contact_preference": request.form.get("contact_preference"),
-        #         "accommodations": request.form.get("accommodations")
-        #     }
-            # mongo.db.jobseekers.insert_one(register)
+        if (request.form.get("password1") == request.form.get("password2")):
+            register = {
+                "full_name": request.form.get("full_name").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password1")),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "city": request.form.get("city").lower(),
+                "country": request.form.get("country").lower(),
+                "description": request.form.get("description"),
+                "sector": sector,
+                "experience": request.form.get("experience"),
+                "education": request.form.get("education"),
+                "contact_preference": request.form.get("contact_preference"),
+                "accommodations": request.form.get("accommodations")
+            }
+            mongo.db.jobseekers.insert_one(register)
 
         # put the new user into 'session' cookie
-            session["user"] = request.form.get("email")
-            flash("Registration Successful!")
+        session["user"] = request.form.get("email")
+        flash("Registration Successful!")
+        return redirect(url_for("employee_profile", username=session["user"]))
 
-        # return redirect(url_for("profile", username=session["user"]))
     return render_template("employee_register.html")
 
 
@@ -121,8 +103,8 @@ def employer_register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("email").lower()
         flash("Registration Successful!")
-        return redirect(url_for("home"))
-        # return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("employer_profile", username=session["user"]))
+
     return render_template("employer_register.html")
 
 
@@ -150,7 +132,7 @@ def login_employee():
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login_employee"))
+                return redirect(url_for("login_employee", username=name))
 
         else:
             # username doesn't exist
@@ -164,8 +146,9 @@ def login_employee():
 def login_employer():
     if request.method == "POST":
         # check if username exists in db
+        email = request.form.get("email")
         existing_user = mongo.db.companies.find_one(
-            {"email": request.form.get("email")})
+            {"email": email})
         name = existing_user["full_name"]
 
         if existing_user:
@@ -175,7 +158,7 @@ def login_employer():
                 session["user"] = request.form.get("email")
                 flash("Welcome, {}!".format(name))
                 return redirect(url_for(
-                    "employer_profile", username=session["user"]))
+                    "employer_profile", username=email))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -201,9 +184,9 @@ def logout():
 def employer_profile(username):
     if "user" in session:
         if session["user"] == username:
-
+            user = mongo.db.companies.find_one({"email": username})
             return render_template(
-                "employer_profile.html")
+                "employer_profile.html", user=user)
         return redirect(url_for("home"))
 
     return redirect(url_for("login"))
@@ -213,9 +196,9 @@ def employer_profile(username):
 def jobseeker_profile(username):
     if "user" in session:
         if session["user"] == username:
-
+            user = mongo.db.jobseekers.find_one({"email": username})
             return render_template(
-                "jobseeker_profile.html")
+                "jobseeker_profile.html", user=user)
         return redirect(url_for("home"))
 
     return redirect(url_for("login"))
