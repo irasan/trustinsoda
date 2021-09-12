@@ -79,16 +79,17 @@ footer a {
 }
 
 .dev {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     text-align: center;
+    width: 10vw;
 }
 
 .dev-icon {
-    width: 10%;
-    height: 10%;
+    width: 75%;
+    height: 75%;
     border-radius: 50%;
-    margin: 20px;
+    margin: 10px;
     padding: 0;
     background-color: black;
 }
@@ -100,6 +101,16 @@ footer a {
 .dev-name {
     text-transform: uppercase;
     text-decoration: none;
+}
+
+@media screen and (max-width: 577px) {
+    .dev-name {
+        display: none;
+    }
+    #cright-div {
+        text-align: left;
+        margin: 20% 20% 0 0;
+    }
 }
 
 #foot-list {
