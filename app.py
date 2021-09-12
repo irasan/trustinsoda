@@ -234,6 +234,12 @@ def candidates():
     return render_template("candidates.html", candidates=candidates)
 
 
+@app.route("/all_candidates")
+def all_candidates():
+    all_candidates = mongo.db.jobseekers.find()
+    return render_template("all_candidates.html", all_candidates=all_candidates)
+
+
 
 @login_required
 @app.route("/employer_update/<username>", methods=["GET", "POST"])
