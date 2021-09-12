@@ -5,7 +5,7 @@
         {% for candidate in candidates %}
         <div class="col-12 col-md-3">
             <div class="card" style="width: 18rem;">
-                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-chat/ava3.png" class="card-img-top" alt="...">
+                <img src="{{ candidate.avatar }}" style="height: 15rem;" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Name: <strong class="text-uppercase">{{ candidate.full_name }}</strong></h5>
                     <ul class="list-group list-group-flush">
@@ -14,7 +14,6 @@
                         <li class="list-group-item">Email: <strong>{{ candidate.email }}</strong></li>
                         <li class="list-group-item">Location:  <strong>{{ candidate.city }}, {{ candidate.country }}</strong></li>
                         <li class="list-group-item">Contact Preference  <strong>{{ candidate.contact_preference }}</strong></li>
-
                     </ul>
                     <h5 class="card-title">Description of <strong >{{ candidate.full_name }}</strong></h5>
                     <p class="card-text">{{ candidate.description }}</p>

@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- All candidates profiles page content goes here -->
+<div class="row">
+    {% for candidate in candidates %}
+    <div class="col-12 col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ candidate.avatar }}" style="height: 15rem;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Name: <strong class="text-uppercase">{{ candidate.full_name }}</strong></h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Sector: <strong>{{ candidate.sector }}</strong></li>
+                    <li class="list-group-item">City: <strong>{{ candidate.city }}</strong></li>
+                    <li class="list-group-item">Country: <strong>{{ candidate.country }}</strong></li>                    
+                </ul>
+               <a href="#" class="btn btn-primary">Visit Profile</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
