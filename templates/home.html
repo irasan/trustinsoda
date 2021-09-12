@@ -2,6 +2,7 @@
 {% block content %}
 
 <div class="container">
+    <div id="intro-contents" class="shadow p-3 mb-5 rounded">
 
     <div id="intro-contents">
         <p>
@@ -16,22 +17,20 @@
 
 <div class="container-fluid" id="sign-up-box">
     <div class="row">
-        <div class="col-12 col-md-6 home-cards">
+        <div class="col-12 col-md-6 home-cards ">
             <div>
-                <p class="card">Click the button below to start creating your Employee profile.</p>
+                <p class="card shadow p-3 mb-5 rounded">Click the button below to start creating your Employee profile.</p>
             </div>
             <div>
-                <p class="card"><button class="bg-btn-home"><a href="{{ url_for('employee_register') }}">Click
-                            here!</a></button></p>
+                <p class="card shadow p-3 mb-5 rounded"><button class="bg-btn-home"><a href="{{ url_for('employee_register') }}">Click here!</a></button></p>
             </div>
         </div>
         <div class="col-12 col-md-6 home-cards">
             <div>
-                <p class="card">Click the button below to start creating your Employer profile.</p>
+                <p class="card shadow p-3 mb-5 rounded">Click the button below to start creating your Employer profile.</p>
             </div>
             <div>
-                <p class="card"><button class="bg-btn-home"><a href="{{ url_for('employer_register') }}">Click
-                            here!</a></button></p>
+                <p class="card shadow p-3 mb-5 rounded"><button class="bg-btn-home"><a href="{{ url_for('employer_register') }}">Click here!</a></button></p>
             </div>
         </div>
     </div>
@@ -42,13 +41,13 @@
 <div class="container-fluid">
     <div class="row" id="image-box">
         <div class="col-12 col-sm-4">
-            <img src="static/images/girl-one.jpg" class="img-fluid max-width: 20% rounded float-left" alt="">
+            <img src="static/images/girl-one.jpg" class="img-fluid max-width: 15% rounded float-left shadow p-3 mb-5" alt="girl with downs syndrome working on laptop on table">
         </div>
         <div class="col-12 col-sm-4">
-            <img src="static/images/girl-two.jpg" class="img-fluid max-width: 20% rounded float-left" alt="">
+            <img src="static/images/girl-two.jpg" class="img-fluid max-width: 15% rounded float-left shadow p-3 mb-5" alt="girl with downs syndrome working on laptop on chair">
         </div>
         <div class="col-12 col-sm-4">
-            <img src="static/images/girl-three.jpg" class="home-img img-fluid max-width: 20% rounded float-left" alt="">
+            <img src="static/images/girl-three.jpg" class="img-fluid max-width: 15% rounded float-left shadow p-3 mb-5" alt="girl with downs syndrome  focusing hard laptop owhile working">
         </div>
     </div>
 </div>

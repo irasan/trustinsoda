@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Error page content goes here -->
+<div>
+    <h2 class="card-404">Oh dear. It looks like you have found the Error 404 page!</h2>
+    <p class="card shadow p-3 mb-5 rounded">Dont worry about it to much, we can take you back to the hame page, just click the button below.</p>
+</div>
+<div class="card-404">
+    <button class="btn-404" ><a href="{{ url_for('home') }}">Click me and i'll take you back to the home page</button>
+</div>
+
+<div class="space-2"></div>
 
 {% endblock %}
