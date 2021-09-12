@@ -52,9 +52,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('all_candidates') }}">All Candidates</a>
             </li>
@@ -64,6 +62,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
+              </li>
             </li>
             {% else %}
             <li class="nav-item">
