@@ -16,7 +16,7 @@
         <p class="lead pl-3">
             Phone: {{ candidate.phone }}<br>
             Email: {{ candidate.email }}<br>
-            Location: {{ candidate.city }}, {{ candidate.country }}
+            Location: {{ candidate.city|title }}, {{ candidate.country|title }}
         </p>
         <hr>
         <h4 class="text-center mt-4">Experience</h4>
@@ -28,7 +28,13 @@
         <hr>
         <h4 class="text-center mt-4">Preferences</h4>
         <p class="lead pl-3">
-            Contact Preference: {{ candidate.contact_preference }}<br>
+            Sector: {% if candidate.sector is iterable and (candidate.sector is not string and candidate.sector is not mapping)%}
+            {% for item in candidate.sector %}{{ item }} &middot; {% endfor %}
+            {% else %} {{ candidate.sector }}
+            {% endif %}<br>
+            Contact Preference: {% if candidate.contact_preference is iterable and (candidate.contact_preference is not string and candidate.contact_preference is not mapping)%}
+            {% for item in candidate.contact_preference %}{{ item }} &middot; {% endfor %}
+            {% else %} {{ candidate.contact_preference }}{% endif %}<br>
             Accommodations: {{ candidate.accommodations }}
         </p>
     </div>

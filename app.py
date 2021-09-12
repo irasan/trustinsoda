@@ -197,8 +197,8 @@ def logout():
     return redirect(url_for("login"))
 
 
-@login_required
 @app.route("/profile/<username>")
+@login_required
 def profile(username):
     user = mongo.db.companies.find_one({"email": username})
     if user:
@@ -208,8 +208,8 @@ def profile(username):
         "employee_profile", username=username))
 
 
-@login_required
 @app.route("/employer_profile/<username>")
+@login_required
 def employer_profile(username):
     if session["user"] == username:
         user = mongo.db.companies.find_one({"email": username})
@@ -218,8 +218,8 @@ def employer_profile(username):
     return redirect(url_for("home"))
 
 
-@login_required
 @app.route("/employee_profile/<username>")
+@login_required
 def employee_profile(username):
     if session["user"] == username:
         sectors = list(mongo.db.sectors.find())
@@ -229,8 +229,8 @@ def employee_profile(username):
     return redirect(url_for("home"))
 
 
-@login_required
 @app.route("/candidate_details/<username>")
+@login_required
 def candidate_details(username):
     candidate = mongo.db.jobseekers.find_one({"email": username})
     return render_template("candidate_details.html", candidate=candidate)
@@ -243,8 +243,8 @@ def all_candidates():
         "all_candidates.html", all_candidates=all_candidates)
 
 
-@login_required
 @app.route("/employer_update/<username>", methods=["GET", "POST"])
+@login_required
 def employer_update(username):
     if session["user"] == username:
         if request.method == "POST":
@@ -266,8 +266,8 @@ def employer_update(username):
     return redirect(url_for("home"))
 
 
-@login_required
 @app.route("/employee_update/<username>", methods=["GET", "POST"])
+@login_required
 def employee_update(username):
     if session["user"] == username:
         if request.method == "POST":
