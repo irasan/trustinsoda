@@ -220,3 +220,14 @@ form {
 .btn-404 {
     background-color: #C3D6E7;
 }
+
+#contact-form {
+    margin: 5% 0;
+    border-radius: 10px;
+}
+
+#contact-form button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
