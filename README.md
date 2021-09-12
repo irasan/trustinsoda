@@ -6,6 +6,9 @@
 
 ### Images
 
+* hands.png
+https://www.pinclipart.com/maxpin/JToobh/
+
 * ladies-working.jpg  
 Photo by Cliff Booth from Pexels
 https://www.pexels.com/photo/women-at-the-shop-having-a-meeting-4058318/
