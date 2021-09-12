@@ -5,21 +5,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enable Recruitment</title>
   <!-- Put all dependancies here -->
+  <!-- reCaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Favicon-->
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <!-- Bootstrap v 4.6 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <!-- Custom CSS-->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-  <title>Document</title>
+  <!-- EmailJS-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("user_1dqcfIzm6DuOVqpkLPFQu");
+    })();
+  </script>
 </head>
 
 <body>
 
   <header>
     <div id="header" class="main-gradient">
-      <h1>Enable - for differently abled people</h1>
+      <h1>Enable</h1>
+      <p id="tag">For differently abled people</p>
 
       <!-- Navbar here -->
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -75,9 +87,11 @@
   <!-- This is the section where content of each page goes
     Container can be removed if needed -->
   <main>
-    {% block content %}
+    <div class="container">
+      {% block content %}
 
-    {% endblock %}
+      {% endblock %}
+    </div>
   </main>
 
   <footer class="footer sticky">
@@ -162,6 +176,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
   </script>
+  <!-- email js-->
+  <script src="{{ url_for('static', filename='js/sendemail.js') }}"></script>
   <!-- Custom JS scripts-->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
