@@ -2,6 +2,7 @@ import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
+from functools import wraps
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
@@ -18,11 +19,26 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# @login_required decorator
+# https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/#login-required-decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # no "user" in session
+        if "user" not in session:
+            flash("You Must Log In To View This Page")
+            return redirect(url_for("login"))
+        # user is in session
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route("/")
 @app.route("/home")
 def home():
     profile = mongo.db.jobseekers.find()
     return render_template("home.html", profile=profile)
+
 
 @app.route("/contact")
 def contact():
@@ -180,18 +196,30 @@ def logout():
     return redirect(url_for("login"))
 
 
+@login_required
+@app.route("/profile/<username>")
+def profile(username):
+    if "user" == username:
+        user = mongo.db.companies.find_one({"email": username})
+        if user:
+            return redirect(url_for(
+                "employer_profile", username=username))
+        return redirect(url_for(
+                    "employee_profile", username=username))
+    return redirect(url_for("home"))
+
+
+@login_required
 @app.route("/employer_profile/<username>", methods=["GET", "POST"])
 def employer_profile(username):
-    if "user" in session:
-        if session["user"] == username:
-            user = mongo.db.companies.find_one({"email": username})
-            return render_template(
-                "employer_profile.html", user=user)
-        return redirect(url_for("home"))
-
-    return redirect(url_for("login"))
+    if session["user"] == username:
+        user = mongo.db.companies.find_one({"email": username})
+        return render_template(
+            "employer_profile.html", user=user)
+    return redirect(url_for("home"))
 
 
+@login_required
 @app.route("/jobseeker_profile/<username>", methods=["GET", "POST"])
 def jobseeker_profile(username):
     if "user" in session:
@@ -202,6 +230,30 @@ def jobseeker_profile(username):
         return redirect(url_for("home"))
 
     return redirect(url_for("login"))
+
+
+@login_required
+@app.route("/employer_update/<username>", methods=["GET", "POST"])
+def employer_update(username):
+    if session["user"] == username:
+        if request.method == "POST":
+            full_name = request.form.get("full_name").lower(),
+            company_name = request.form.get("company_name").lower(),
+            phone = request.form.get("phone"),
+            city = request.form.get("city").lower(),
+            country = request.form.get("country").lower(),
+
+            company_name = request.form.get("company_name").lower()
+            mongo.db.companies.update(
+                {"email": username}, {"$set": {"company_name": company_name,
+                                               "full_name": full_name,
+                                               "phone": phone,
+                                               "city": city,
+                                               "country": country}})
+            flash("Your Profile Was Successfully Updated")
+            return redirect(url_for(
+                "employer_profile", username=username))
+    return redirect(url_for("home"))
 
 
 @app.errorhandler(404)
