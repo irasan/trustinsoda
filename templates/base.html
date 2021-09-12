@@ -9,6 +9,8 @@
   
   <!-- reCaptcha -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
   <!-- Favicon-->
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <!-- Bootstrap v 4.6 -->
@@ -30,7 +32,7 @@
 
   <header>
     <div id="header" class="main-gradient text-left">
-      <h1>Enable</h1>
+      <a class="logo" href="{{ url_for('home') }}"><h1>Enable</h1></a>
 
       <!-- Navbar here -->
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -50,11 +52,10 @@
               <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
-            </li>
-            
-            <li class="nav-item">
               <a class="nav-link" href="{{ url_for('all_candidates') }}">All Candidates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
             </li>
             {% if session.user %}
             <li class="nav-item">
@@ -62,9 +63,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
-              </li>
             </li>
             {% else %}
             <li class="nav-item">

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-center mb-5 mt-5">Candidates profile</h1>
+
+<div class="row cv">
+    <div class="col-12 col-md-6">
+        <h2 class="text-center pt-5">{{ candidate.full_name|title }}</h2>
+    </div>
+    <div class="col-12 col-md-6 text-center">
+        <img class="img-fluid" src="{{ candidate.avatar }}" alt="avatar">
+    </div>
+
+    <div class="col-12 mb-5">
+        <h4 class="text-center mt-4">Personal details</h4>
+        <p class="lead pl-3">
+            Phone: {{ candidate.phone }}<br>
+            Email: {{ candidate.email }}<br>
+            Location: {{ candidate.city }}, {{ candidate.country }}
+        </p>
+        <hr>
+        <h4 class="text-center mt-4">Experience</h4>
+        <p class="lead pl-3">
+            Description: {{ candidate.description }}<br>
+            Experience: {{ candidate.experience }}<br>
+            Education: {{ candidate.education }}
+        </p>
+        <hr>
+        <h4 class="text-center mt-4">Preferences</h4>
+        <p class="lead pl-3">
+            Contact Preference: {{ candidate.contact_preference }}<br>
+            Accommodations: {{ candidate.accommodations }}
+        </p>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="{{ url_for('all_candidates') }}" class="btn btn-info btn-lg mt-3 mb-5">
+        <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <span>Go back</span>
+    </a>
+</div>
+
+{% endblock %}
