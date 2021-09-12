@@ -29,18 +29,20 @@
 <body>
 
   <header>
-    <div id="header" class="main-gradient">
+    <div id="header" class="main-gradient text-left">
       <h1>Enable</h1>
-      <p id="tag">For differently abled people</p>
 
       <!-- Navbar here -->
       <nav class="navbar navbar-expand-lg navbar-light">
+        <span class="navbar-text text-dark font-weight-bold lead">
+          For differently abled people
+        </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse text-right lead font-weight-bold" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -49,6 +51,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('all_candidates') }}">All Candidates</a>
             </li>
             {% if session.user %}
             <li class="nav-item">
@@ -65,12 +73,6 @@
               <a class="nav-link" href="{{ url_for('home', _anchor='sign-up-box') }}">Sign Up</a>
             </li>
             {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('all_candidates') }}">All Candidates</a>
-            </li>
           </ul>
         </div>
     </div>
@@ -102,8 +104,8 @@
 
   <footer class="footer">
     <div class="main-gradient">
-      <div class="row">
-        <div class="col-2">
+      <div class="row ">
+        <div class="col-sm-12 col-md-3 mt-3">
           <ul id="foot-list">
             <li>
               <a href="{{ url_for('home') }}">Home</a>
@@ -116,58 +118,52 @@
             </li>
           </ul>
         </div>
-        <div class="col-8">
-          <section class="devs">
+        <div class="col-sm-9 col-md-6 mt-3">
             <div class="dev">
-              <a href="https://github.com/irasan" target="_blank" rel="noopener noreferrer">
-                <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/iryna.jpg')}}"
-                  alt="Iryna gitHub profile picture" />
-
-                <p class="dev-name">Iryna</p>
-              </a>
+              <ul class="list-inline foot-list">
+                <li class="list-inline-item">
+                <a href="https://github.com/irasan" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/iryna.jpg')}}"
+                    alt="Iryna gitHub profile picture" />
+                  <p class="dev-name">Iryna</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/CraigThomasson" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Craig</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/hartnetl" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/laura.jpg')}}"
+                    alt="github profile image for laura" />
+                  <p class="dev-name">Laura</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/rlopezba1" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Ruben</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/AwsSG" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Aws</p>
+                </a>
+              </li>
+              </ul>
+              
             </div>
-
-            <div class="dev">
-              <a href="https://github.com/CraigThomasson" target="_blank" rel="noopener noreferrer">
-                <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
-                  alt="github logo" />
-
-                <p class="dev-name">Craig</p>
-              </a>
-            </div>
-
-            <div class="dev">
-              <a href="https://github.com/hartnetl" target="_blank" rel="noopener noreferrer">
-                <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/laura.jpg')}}"
-                  alt="github profile image for laura" />
-
-                <p class="dev-name">Laura</p>
-              </a>
-            </div>
-
-            <div class="dev">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
-                  alt="github logo" />
-
-                <p class="dev-name">Ruben</p>
-              </a>
-            </div>
-
-            <div class="dev">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
-                  alt="github logo" />
-
-                <p class="dev-name">Aws</p>
-              </a>
-            </div>
-          </section>
         </div>
 
-        <div class="col-2">
-          <p id="cright">
-            copyright <br> Enable <br> 2021
+        <div class="col-sm-3 col-md-3 mt-3">
+          <p class="cright">
+            &copy; copyright <br> Lighthouse Devs <br> 2021
           </p>
         </div>
 

@@ -38,21 +38,14 @@ hr {
     margin: 0 auto;
 }
 
-/* .custom-control-label {
-    font-size: 1.6rem;
-    
-} */
 /* header */
-
-header {
-    text-align: center;
-}
 
 header h1 {
     font-size: 300%;
     font-weight: bold;
     margin-left: 20px;
     padding-top: 3vh;
+    margin-bottom: 0;
 }
 
 /* footer */
@@ -71,26 +64,15 @@ footer a {
     color: black;
 }
 
-.devs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .dev {
-    display: inline-flex;
-    align-items: center;
     text-align: center;
-    width: 10vw;
+    display: inline;
 }
 
 .dev-icon {
-    width: 75%;
-    height: 75%;
+    width: 60px;
+    height: auto;
     border-radius: 50%;
-    margin: 10px;
-    padding: 0;
     background-color: black;
 }
 
@@ -107,16 +89,11 @@ footer a {
     .dev-name {
         display: none;
     }
-    #cright-div {
-        text-align: left;
-        margin: 20% 20% 0 0;
-    }
 }
 
 #foot-list {
     list-style-type: none;
     text-decoration: none;
-    margin-top: 25%;
 }
 
 #foot-list>li {
@@ -125,9 +102,9 @@ footer a {
     line-height: 1.5rem;
 }
 
-#cright {
+.cright {
     text-align: center;
-    margin: 20% 15% 0 0;
+    margin: 0 auto;
 }
 
 /* home page */
@@ -273,6 +250,10 @@ form {
 @media screen and (max-width: 640px)  {
     .card-404 {
         width: 90%;
+    }
+
+    .dev-icon {
+        width: 30px;
     }
 }
 /* CONTACT PAGE */
