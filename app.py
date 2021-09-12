@@ -203,6 +203,12 @@ def jobseeker_profile(username):
 
     return redirect(url_for("login"))
 
+@app.route("/candidates")
+def candidates():
+    candidates = mongo.db.jobseekers.find()
+    return render_template("candidates.html", candidates=candidates)
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):

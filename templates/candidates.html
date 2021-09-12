@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for candidate in candidates %} <br>
+    {{ candidate.full_name }}<br>
+    {{ candidate.email }}<br>
+    {{ candidate.phone }}<br>
+    {{ candidate.city }}<br>
+    {{ candidate.country }}<br>
+    {{ candidate.description }}<br>
+    {{ candidate.experience }}<br>
+    {{ candidate.sector }}<br>
+    {{ candidate.contact_preference }}<br>
+    {{ candidate.accommodations }}<br>
+{% endfor %}
+
+{% endblock %}
