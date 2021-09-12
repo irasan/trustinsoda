@@ -2,9 +2,9 @@ import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
+from functools import wraps
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
 
@@ -18,11 +18,26 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# @login_required decorator
+# https://flask.palletsprojects.com/en/2.0.x/patterns/viewdecorators/#login-required-decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # no "user" in session
+        if "user" not in session:
+            flash("You Must Log In To View This Page")
+            return redirect(url_for("login"))
+        # user is in session
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route("/")
 @app.route("/home")
 def home():
     profile = mongo.db.jobseekers.find()
     return render_template("home.html", profile=profile)
+
 
 @app.route("/contact")
 def contact():
@@ -117,7 +132,7 @@ def login():
 def login_employee():
     if request.method == "POST":
         # check if username exists in db
-        existing_user = mongo.db.employees.find_one(
+        existing_user = mongo.db.jobseekers.find_one(
             {"email": request.form.get("email")})
         name = existing_user["full_name"]
 
@@ -128,7 +143,7 @@ def login_employee():
                 session["user"] = request.form.get("email")
                 flash("Welcome, {}!".format(name))
                 return redirect(url_for(
-                    "jobseeker_profile", username=session["user"]))
+                    "employee_profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -180,28 +195,100 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/employer_profile/<username>", methods=["GET", "POST"])
+@login_required
+@app.route("/profile/<username>")
+def profile(username):
+    user = mongo.db.companies.find_one({"email": username})
+    if user:
+        return redirect(url_for(
+            "employer_profile", username=username))
+    return redirect(url_for(
+        "employee_profile", username=username))
+
+
+@login_required
+@app.route("/employer_profile/<username>")
 def employer_profile(username):
-    if "user" in session:
-        if session["user"] == username:
-            user = mongo.db.companies.find_one({"email": username})
-            return render_template(
-                "employer_profile.html", user=user)
-        return redirect(url_for("home"))
-
-    return redirect(url_for("login"))
+    if session["user"] == username:
+        user = mongo.db.companies.find_one({"email": username})
+        return render_template(
+            "employer_profile.html", user=user)
+    return redirect(url_for("home"))
 
 
-@app.route("/jobseeker_profile/<username>", methods=["GET", "POST"])
-def jobseeker_profile(username):
+@login_required
+@app.route("/employee_profile/<username>")
+def employee_profile(username):
     if "user" in session:
         if session["user"] == username:
             user = mongo.db.jobseekers.find_one({"email": username})
             return render_template(
-                "jobseeker_profile.html", user=user)
+                "employee_profile.html", user=user)
         return redirect(url_for("home"))
 
     return redirect(url_for("login"))
+
+@app.route("/candidates")
+def candidates():
+    candidates = mongo.db.jobseekers.find()
+    return render_template("candidates.html", candidates=candidates)
+
+
+
+@login_required
+@app.route("/employer_update/<username>", methods=["GET", "POST"])
+def employer_update(username):
+    if session["user"] == username:
+        if request.method == "POST":
+            full_name = request.form.get("full_name").lower()
+            company_name = request.form.get("company_name").lower()
+            phone = request.form.get("phone")
+            city = request.form.get("city").lower()
+            country = request.form.get("country").lower()
+
+            mongo.db.companies.update_one(
+                {"email": username}, {"$set": {"full_name": str(full_name).strip("( , ' )"),
+                                               "company_name": str(company_name).strip("( , ' )"),
+                                               "phone": str(phone).strip("( , ' )"),
+                                               "city": str(city).strip("( , ' )"),
+                                               "country": str(country).strip("(,')")}})
+            flash("Your Profile Was Successfully Updated")
+            return redirect(url_for(
+                "employer_profile", username=username))
+    return redirect(url_for("home"))
+
+
+@login_required
+@app.route("/employee_update/<username>", methods=["GET", "POST"])
+def employee_update(username):
+    if session["user"] == username:
+        if request.method == "POST":
+            full_name = request.form.get("full_name").lower()
+            phone = request.form.get("phone")
+            city = request.form.get("city").lower()
+            country = request.form.get("country").lower()
+            sector = request.form.get("sector")
+            description = request.form.get("description")
+            experience = request.form.get("experience")
+            education = request.form.get("education")
+            contact_preference = request.form.get("contact_preference")
+            accommodations = request.form.get("accommodations")
+
+            mongo.db.jobseekers.update_one(
+                {"email": username}, {"$set": {"full_name": str(full_name).strip("( , ' )"),
+                                               "phone": str(phone).strip("( , ' )"),
+                                               "city": str(city).strip("( , ' )"),
+                                               "country": str(country).strip("(,')"),
+                                               "sector": str(sector).strip("( , ' )"),
+                                               "description": str(description).strip("( , ' )"),
+                                               "experience": str(experience).strip("( , ' )"),
+                                               "education": str(education).strip("( , ' )"),
+                                               "contact_preference": str(contact_preference).strip("( , ' )"),
+                                               "accommodations": str(accommodations).strip("( , ' )")}})
+            flash("Your Profile Was Successfully Updated")
+            return redirect(url_for(
+                "employee_profile", username=username))
+    return redirect(url_for("home"))
 
 
 @app.errorhandler(404)

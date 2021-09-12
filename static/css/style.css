@@ -13,6 +13,11 @@ a {
     text-decoration: none;
 }
 
+
+hr {
+    width: 80%;
+    border-top: 1px solid #007bff;
+
 #tag {
     margin-bottom: 0;
 }
@@ -200,7 +205,7 @@ form {
 /* 404 */
 
 .card-404 {
-    width: 25rem;
+    width: 80%;
     text-align: center;
     font-weight: bold;
     font-size: 160%;
@@ -210,10 +215,42 @@ form {
     border: 1px solid black;
 }
 
+.card-404 a {
+    color: white;
+    font-size: 2rem;
+}
+
 .btn-404 {
     background-color: #C3D6E7;
 }
 
+
+/* Candidates style */
+
+.font-weight-normal {
+    font-weight: 500 !important;
+}
+.w-25 {
+    width: 25% !important;
+}
+.text-muted {
+    color: #b2b2b2 !important;
+}
+.mr-1, .mx-1 {
+    margin-right: 0.625rem !important;
+}
+
+.img-candidate {
+    height: 100%;
+    width: 100%;
+    background-color: #007bff;
+}
+
+@media screen and (max-width: 640px)  {
+    .card-404 {
+        width: 90%;
+    }
+}
 /* CONTACT PAGE */
 
 #contact-form {

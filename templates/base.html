@@ -52,6 +52,9 @@
             </li>
             {% if session.user %}
             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
             </li>
             {% else %}
@@ -62,6 +65,9 @@
               <a class="nav-link" href="{{ url_for('home', _anchor='sign-up-box') }}">Sign Up</a>
             </li>
             {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('candidates') }}">Candidates</a>
+            </li>
           </ul>
         </div>
     </div>
