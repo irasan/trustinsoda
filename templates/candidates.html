@@ -1,17 +1,52 @@
+
 {% extends "base.html" %}
 {% block content %}
 
-{% for candidate in candidates %} <br>
-    {{ candidate.full_name }}<br>
-    {{ candidate.email }}<br>
-    {{ candidate.phone }}<br>
-    {{ candidate.city }}<br>
-    {{ candidate.country }}<br>
-    {{ candidate.description }}<br>
-    {{ candidate.experience }}<br>
-    {{ candidate.sector }}<br>
-    {{ candidate.contact_preference }}<br>
-    {{ candidate.accommodations }}<br>
-{% endfor %}
+<div class="container"></div>
+{% for candidate in candidates %} 
 
-{% endblock %}
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-2">
+                    <img class="img-thumbnail img-fluid" style="width: 8rem;"
+                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.inXSw5jbycIIlXC1dIXdiwHaIL%26pid%3DApi&f=1" alt="">
+                        
+                </div>
+                <div class="mb-2 d-flex">
+                    <h4 class="font-weight-normal">Name: {{ candidate.full_name }}</h4>
+
+                </div>
+                <div class="mb-2">
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Profession/Sector: </span>
+                            <label class="media-body">{{ candidate.sector }}</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Phone: </span>
+                            <label class="media-body">{{ candidate.phone }}</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Email: </span>
+                            <label class="media-body">{{ candidate.email }}</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Location: </span>
+                            <label class="media-body">{{ candidate.city }}, {{ candidate.country }}</label>
+                        </li>
+                    </ul>
+                </div>
+            <div class="col-">
+                <h5 class="font-weight-normal">Description of {{ candidate.full_name }}</h5>
+                <p>{{ candidate.description }}</p>
+
+                <h5 class="font-weight-normal">Personal Experience</h5>
+                <p>{{ candidate.experience }}</p>
+                <div class="mb-2 mt-2 pt-1">
+                    <h5 class="font-weight-normal">Contact Preference</h5>
+                    <p> {{ candidate.contact_preference }}</p>
+                </div>
+            </div>            
+        </div>
+    {% endfor %}
+    {% endblock %}

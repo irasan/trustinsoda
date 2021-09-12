@@ -220,3 +220,24 @@ form {
 .btn-404 {
     background-color: #C3D6E7;
 }
+
+
+/* Candidates style */
+
+.font-weight-normal {
+    font-weight: 500 !important;
+}
+.w-25 {
+    width: 25% !important;
+}
+.text-muted {
+    color: #b2b2b2 !important;
+}
+.mr-1, .mx-1 {
+    margin-right: 0.625rem !important;
+}
+
+.img-candidate {
+    height: 100%;
+    width: 100%;
+}
