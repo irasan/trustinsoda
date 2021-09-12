@@ -229,17 +229,18 @@ def employee_profile(username):
     return redirect(url_for("home"))
 
 
-@app.route("/candidates")
-def candidates():
-    candidates = mongo.db.jobseekers.find()
-    return render_template("candidates.html", candidates=candidates)
+@login_required
+@app.route("/candidate_details/<username>")
+def candidate_details(username):
+    candidate = mongo.db.jobseekers.find_one({"email": username})
+    return render_template("candidate_details.html", candidate=candidate)
 
 
 @app.route("/all_candidates")
 def all_candidates():
     all_candidates = mongo.db.jobseekers.find()
-    return render_template("all_candidates.html", all_candidates=all_candidates)
-
+    return render_template(
+        "all_candidates.html", all_candidates=all_candidates)
 
 
 @login_required
