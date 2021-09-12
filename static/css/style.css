@@ -13,6 +13,15 @@ a {
     text-decoration: none;
 }
 
+
+hr {
+    width: 80%;
+    border-top: 1px solid #007bff;
+
+#tag {
+    margin-bottom: 0;
+}
+
 /* flash messages  */
 .flashes {
     background-color: black;
@@ -116,27 +125,16 @@ footer a {
     height: 5vh;
 }
 
+#hero {
+    width: 70%;
+    border-radius: 5px;
+    margin: 2% auto 5% auto;
+    background-color: #bedfee;
+}
+
 #intro-contents {
-    /* width: 100%;
-    height: 90vh;
-    border: 1px solid black;
     text-align: center;
-    margin: 5% auto;
-    background-color: #C3D6E7;
-    font-weight: 700; */
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)),
-        url(../images/hands.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    vertical-align: middle;
 }
-
-#intro-contents>p{
-vertical-align: middle;
-}
-
 
 /* cards */
 
@@ -207,7 +205,7 @@ form {
 /* 404 */
 
 .card-404 {
-    width: 25rem;
+    width: 80%;
     text-align: center;
     font-weight: bold;
     font-size: 160%;
@@ -215,6 +213,11 @@ form {
     color: black;
     margin: 19px auto;;
     border: 1px solid black;
+}
+
+.card-404 a {
+    color: white;
+    font-size: 2rem;
 }
 
 .btn-404 {
@@ -240,4 +243,23 @@ form {
 .img-candidate {
     height: 100%;
     width: 100%;
+    background-color: #007bff;
+}
+
+@media screen and (max-width: 640px)  {
+    .card-404 {
+        width: 90%;
+    }
+}
+/* CONTACT PAGE */
+
+#contact-form {
+    margin: 5% 0;
+    border-radius: 10px;
+}
+
+#contact-form button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
