@@ -60,7 +60,7 @@ def employee_register():
             flash("Account with such an email is already registered")
             return redirect(url_for("employee_register"))
 
-        sector = request.form.get("sector")
+        sector = request.form.getlist("sector")
         if sector == "other":
             sector = request.form.get("sector_other")
 
@@ -75,10 +75,11 @@ def employee_register():
                 "country": request.form.get("country").lower(),
                 "description": request.form.get("description"),
                 "sector": sector,
-                "experience": request.form.get("experience"),
-                "education": request.form.get("education"),
-                "contact_preference": request.form.get("contact_preference"),
-                "accommodations": request.form.get("accommodations")
+                "experience": request.form.get("experience1"),
+                "education": request.form.get("education1"),
+                "contact_preference": request.form.getlist("contact_preference"),
+                "accommodations": request.form.get("accommodations"),
+                "avatar": request.form.get("avatar")
             }
             mongo.db.jobseekers.insert_one(register)
 
@@ -87,7 +88,8 @@ def employee_register():
         flash("Registration Successful!")
         return redirect(url_for("employee_profile", username=session["user"]))
 
-    return render_template("employee_register.html")
+    sectors = list(mongo.db.sectors.find())
+    return render_template("employee_register.html", sectors=sectors)
 
 
 @app.route("/employer_register", methods=["GET", "POST"])
@@ -219,14 +221,13 @@ def employer_profile(username):
 @login_required
 @app.route("/employee_profile/<username>")
 def employee_profile(username):
-    if "user" in session:
-        if session["user"] == username:
-            user = mongo.db.jobseekers.find_one({"email": username})
-            return render_template(
-                "employee_profile.html", user=user)
-        return redirect(url_for("home"))
+    if session["user"] == username:
+        sectors = list(mongo.db.sectors.find())
+        user = mongo.db.jobseekers.find_one({"email": username})
+        return render_template(
+            "employee_profile.html", user=user, sectors=sectors)
+    return redirect(url_for("home"))
 
-    return redirect(url_for("login"))
 
 @app.route("/candidates")
 def candidates():

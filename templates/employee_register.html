@@ -2,16 +2,16 @@
 {% block content %}
 
 <div class="container" id="employee-reg-container">
-  <h2>Welcome to <em>Our site name</em></h2>
-  <h3>Please enter your details carefully</h3>
+  <h1 class="text-center mt-3 mb-3">Registration form for candidates</h1>
+  <p class="lead">Please enter your details carefully</p>
 
-  <p>If you would rather sign up using our friendly AI chatbot, please do so <a href=#>here</a>. <br>
+  <p>If you would rather sign up using our friendly AI <span class="lead">chatbot</span>, please do so <a href=#>here</a>. <br>
     Otherwise, please continue below.</p>
 
 
   <div id="employee-form-container">
     <form id="employee-form" method="POST" action="{{ url_for('employee_register') }}">
-      <h3>Personal details</h3>
+      <h3 class="text-center">Personal details</h3>
       <div class="form-group">
         <label for="full_name">Full Name</label>
         <input type="text" class="form-control" id="full_name" name="full_name" required>
@@ -48,81 +48,61 @@
         <input type="password" class="form-control" id="password2" name="password2" 
         minlength="8" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
       </div>
-      <!-- <button type="button" onclick="save_part1" class="btn btn-primary next-page" id="form-b-1" name="form-b-1">Next Page</button>
-        <p class="page-count">Page 1 of 3</p> -->
+      
       <hr>
-      <h3>Experience</h3>
+      <h3 class="text-center" >Experience</h3>
       <div class="form-group">
         <label for="description">Tell us a bit about yourself</label>
         <textarea class="form-control" id="description" name="description" rows="3"></textarea>
       </div>
       
-      <p> What area are you looking for work in? </p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="retail-btn" name="sector" value="retail" class="custom-control-input">
-        <label class="custom-control-label" for="retail-btn">Retail</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="admin-btn" name="sector" value="admin" class="custom-control-input">
-        <label class="custom-control-label" for="admin-btn">Admin</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="hospo-btn" name="sector" value="hospitality" class="custom-control-input">
-        <label class="custom-control-label" for="hosp-btn">Hospitality</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="it-btn" name="sector" value="IT" class="custom-control-input">
-        <label class="custom-control-label" for="it-btn">I.T.</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="other-btn" name="sector" value="other" class="custom-control-input">
-        <label class="custom-control-label" for="other-btn">Other</label>
-      </div>
-      <div class="form-group">
-        <label for="work-box">Enter job type below:</label>
-        <input type="text" class="form-control" id="work-box" name="sector-other">
+      <p class="lead mt-5"> What area are you looking for work in? </p>
+      <div class="form-group form-check form-control-lg">
+        {% for s in sectors %}
+        <input type="checkbox" id="sector" name="sector" 
+        aria-label="Checkbox for {{ s.sector }} sector">
+        <label class="checkbox-label mr-3" for="custom-checkbox">{{ s.sector }}</label>
+        {% endfor %}
       </div>
 
-      <p>Have you work experience in this area?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="yes-btn-1" name="yes-btn-1" class="custom-control-input">
-        <label class="custom-control-label" for="yes-btn-1">Yes</label>
+      <p class="lead mt-5">Have you work experience in this area?</p>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="yes-radio-experience" name="experience" class="custom-control-input">
+        <label class="custom-control-label" for="yes-radio-experience">Yes</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="no-btn-1" name="no-btn-1" class="custom-control-input">
-        <label class="custom-control-label" for="no-btn-1">No</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="no-radio-experience" name="experience" class="custom-control-input">
+        <label class="custom-control-label" for="no-adio-experience">No</label>
       </div>
       <div class="form-group">
         <label for="work-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="work-experience-box" name="experience">
+        <input type="text" class="form-control" id="work-experience-box" name="experience1">
       </div>
 
-      <p>Have you other training or experiences relevant to this job?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="yes-btn-2" name="yes-btn-2" class="custom-control-input">
-        <label class="custom-control-label" for="yes-btn-2">Yes</label>
+      <p class="lead mt-5">Have you other training or experiences relevant to this job?</p>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="yes-radio-education" name="education" class="custom-control-input">
+        <label class="custom-control-label" for="yes-radio-education">Yes</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="no-btn-2" name="no-btn-2" class="custom-control-input">
-        <label class="custom-control-label" for="no-btn-2">No</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="no-radio-education" name="education" class="custom-control-input">
+        <label class="custom-control-label" for="no-radio-education">No</label>
       </div>
       <div class="form-group">
         <label for="other-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="other-experience-box" name="education">
+        <input type="text" class="form-control" id="other-experience-box" name="education1">
       </div>
 
-      <!-- <button type="button" class="btn btn-primary next-page" id="form-b-2" name="form-b-2">Next Page</button>
-      <p class="page-count">Page 2 of 3</p> -->
       <hr>
-      <h3>Preferences</h3>
-      <p>Would you like a potential employer to contact you via phone or email?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="phone-radio" name="contact_preference" value="phone" class="custom-control-input">
-        <label class="custom-control-label" for="phone-radio">Phone</label>
+      <h3 class="text-center" >Preferences</h3>
+      <p class="lead mt-5">Would you like a potential employer to contact you via phone or email?</p>
+      <div class="custom-control custom-control-inline custom-checkbox form-control-lg">
+        <input type="checkbox" class="custom-control-input" id="check-phone" name="contact_preference">
+        <label class="custom-control-label" for="check-phone">Phone</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="email-radio" name="contact_preference" value="email" class="custom-control-input">
-        <label class="custom-control-label" for="email-radio">Email</label>
+      <div class="custom-control custom-control-inline custom-checkbox form-control-lg">
+        <input type="checkbox" class="custom-control-input" id="check-email" name="contact_preference">
+        <label class="custom-control-label" for="check-email">Email</label>
       </div>
 
       <div class="form-group">
@@ -130,14 +110,15 @@
         <textarea class="form-control" id="accommodations" name="accommodations" rows="3"></textarea>
       </div>
 
+      <div class="form-group">
       <input type="file" accept="image/*" id="avatar" name="avatar" capture>
       <script>
         const avatar = document.getElementById('avatar');
         fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
       </script>
+      </div>
 
-      <button type="submit" class="btn btn-primary next-page" id="form-b-3" name="form-b-3">Submit Registration!</button>
-      <!-- <p class="page-count">Page 3 of 3</p> -->
+      <button type="submit" class="btn btn-primary mt-3 mb-5" id="reg-submit">Submit Registration!</button>
     </form>
   </div>
 </div>

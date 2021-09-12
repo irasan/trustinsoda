@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="text-center mt-3 mb-3">{{ user.full_name|title }} profile</h1>
-<div class="container" id="employer-reg-container">
+<div class="row">
+    <div class="col-12 col-md-6">
+        <h1 class="text-center mt-3 mb-3">{{ user.full_name|title }}'s profile</h1>
+    </div>
+    <div class="col-12 col-md-6">
+        <img class="img-fluid" src="{{ user.avatar }}" alt="avatar">
+    </div>
+</div>
 
+<div class="container" id="employer-reg-container">
     <form id="employee-form" method="POST" action="{{ url_for('employee_update', username=user.email) }}">
       <h3>Personal details</h3>
       <div class="form-group">
         <label for="full_name">Full Name</label>
-        <input type="text" class="form-control" id="full_name" name="full_name" value="{{user.full_name}}">
+        <input type="text" class="form-control" id="full_name" name="full_name" value="{{user.full_name|title}}">
       </div>
 
       <div class="form-group">
@@ -24,10 +31,10 @@
       <div class="form-group" id="location-form">
         <span>
           <label for="city">Location</label>
-          <input type="text" class="form-control" id="city" name="city" value="{{user.city}}">
+          <input type="text" class="form-control" id="city" name="city" value="{{user.city|title}}">
         </span>
         <span>
-          <input type="text" class="form-control" id="country" name="country" value="{{user.country}}">
+          <input type="text" class="form-control" id="country" name="country" value="{{user.country|title}}">
         </span>
       </div>
 
@@ -39,29 +46,17 @@
       </div>
       
       <p> What area are you looking for work in? </p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="retail-btn" name="sector" value="retail" class="custom-control-input">
-        <label class="custom-control-label" for="retail-btn">Retail</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="admin-btn" name="sector" value="admin" class="custom-control-input">
-        <label class="custom-control-label" for="admin-btn">Admin</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="hospo-btn" name="sector" value="hospitality" class="custom-control-input">
-        <label class="custom-control-label" for="hosp-btn">Hospitality</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="it-btn" name="sector" value="IT" class="custom-control-input">
-        <label class="custom-control-label" for="it-btn">I.T.</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="other-btn" name="sector" value="other" class="custom-control-input">
-        <label class="custom-control-label" for="other-btn">Other</label>
-      </div>
-      <div class="form-group">
-        <label for="work-box">Enter job type below:</label>
-        <input type="text" class="form-control" id="work-box" name="sector-other">
+      <div class="form-group form-check">
+            {% for s in sectors %}
+            {% if s.sector in user.sector %}
+            <input type="checkbox" value="{{ s.sector }}" id="sector" name="sector" 
+            aria-label="Checkbox for {{ s.sector }} sector" checked>
+            {% else %}
+            <input type="checkbox" value="{{ s.sector }}" id="sector" name="sector" 
+            aria-label="Checkbox for {{ s.sector }} sector">
+            {% endif %}
+        <label class="checkbox-label mr-3" for="custom-checkbox">{{ s.sector }}</label>
+        {% endfor %}
       </div>
 
       <p>Have you work experience in this area?</p>
@@ -95,13 +90,21 @@
       <hr>
       <h3>Preferences</h3>
       <p>Would you like a potential employer to contact you via phone or email?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="phone-radio" name="contact_preference" value="phone" class="custom-control-input">
-        <label class="custom-control-label" for="phone-radio">Phone</label>
+      <div class="custom-control custom-control-inline custom-checkbox">
+        {% if "phone" in user.contact_preference %}
+        <input type="checkbox" class="custom-control-input" id="check-phone" name="contact_preference" checked>
+        {% else %}
+        <input type="checkbox" class="custom-control-input" id="check-phone" name="contact_preference">
+        {% endif %}
+        <label class="custom-control-label" for="check-phone">Phone</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="email-radio" name="contact_preference" value="email" class="custom-control-input">
-        <label class="custom-control-label" for="email-radio">Email</label>
+      <div class="custom-control custom-checkbox">
+        {% if "email" in user.contact_preference %}
+        <input type="checkbox" class="custom-control-input" id="check-email" name="contact_preference" checked>
+        {% else %}
+        <input type="checkbox" class="custom-control-input" id="check-email" name="contact_preference">
+        {% endif %}
+        <label class="custom-control-label" for="check-email">Email</label>
       </div>
 
       <div class="form-group">
