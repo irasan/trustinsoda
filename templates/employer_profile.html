@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="text-center mt-3 mb-3">{{ user.full_name|upper }} profile</h1>
+<h1 class="text-center mt-3 mb-3">{{ user.full_name|title }} profile</h1>
 <div class="container" id="employer-reg-container">
 
     <form id="employer-reg-form" method="POST" action="{{ url_for('employer_update', username=user.email) }}">
       <div class="form-group">
         <label for="full_name">Full Name</label>
-        <input type="text" class="form-control" id="full_name" name="full_name" value="{{user.full_name|capitalize}}">
+        <input type="text" class="form-control" id="full_name" name="full_name" value="{{user.full_name|title}}">
       </div>
 
       <div class="form-group">
@@ -17,12 +17,12 @@
           
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+        <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" readonly="readonly">
       </div>
 
       <div class="form-group">
         <label for="number">Contact Number</label>
-        <input type="text" class="form-control" id="phone" name="phone" value="{{user.phone}}">
+        <input type="text" class="form-control" id="phone" name="phone" value="{{ user.phone }}">
       </div>
 
       <div class="form-group" id="location-form">
