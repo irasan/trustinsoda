@@ -10,9 +10,9 @@ $(document).ready(function () {
       $(".current-input").click();
       let label = $(".current-input").attr("id");
 
-      var next = function(dict, key) {
-        var keys = Object.keys(dict)
-          , i = keys.indexOf(key);
+      var next = function (dict, key) {
+        var keys = Object.keys(dict),
+          i = keys.indexOf(key);
         return i !== -1 && keys[i + 1];
       };
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
       $(".current-input").removeClass("current-input").addClass("previous-input");
 
-      $(".chatbox").append(inputList[nextLabel]);
+      $(".chatbox").append($(inputList[nextLabel]).hide().fadeIn("fast"));
 
 
       return console.log(nextLabel);
