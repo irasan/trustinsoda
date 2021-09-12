@@ -19,13 +19,12 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Sector:
                         {% if candidate.sector is iterable and (candidate.sector is not string and candidate.sector is not mapping)%}
-                        {% for item in candidate.sector %}{{ item }}&middot; {% endfor %}
+                        {% for item in candidate.sector %}{{ item }} &middot; {% endfor %}
                         {% else %} {{ candidate.sector }}
                         {% endif %}</li>
                     <li class="list-group-item">City: {{ candidate.city|title }}</li>
                     <li class="list-group-item">Country: {{ candidate.country|title }}</li>
                 </ul>
-
             </div>
         </div>
     </div>
