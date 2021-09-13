@@ -26,12 +26,13 @@ const inputList = {
   "password1": '<input type="password" class="form-control current-input" id="password1" name="password1" required>',
   "password2": '<input type="password" class="form-control current-input" id="password2" name="password2" required>',
   "disc": '<textarea class="form-control current-input" id="description" name="description" rows="3"></textarea>',
-  "area": '<input type="text" class="form-control current-input" id="work-area" name="work-area" required>',
-  "type": '<input type="text" class="form-control current-input" id="job-type" name="job-type" required>',
-  "exp": '<input type="text" class="form-control current-input" id="work-experience-box" required>',
-  "exp2": '<input type="text" class="form-control current-input" id="other-experience-box" required>',
-  "contact": '<input type="text" class="form-control current-input" id="contact" required>',
+  "area": '<input type="text" class="form-control current-input" id="sector" name="sector" required>',
+  "type": '<input type="text" class="form-control current-input" id="sector_other" name="sector_other" required>',
+  "exp": '<input type="text" class="form-control current-input" id="experience1" name="experience1" required>',
+  "exp2": '<input type="text" class="form-control current-input" id="education" name="education" required>',
+  "contact": '<input type="text" class="form-control current-input" id="contact_preference" name="contact_preference" required>',
   "accom": '<textarea class="form-control current-input" id="accommodations" name="accommodations" rows="3"></textarea>', 
+  "avatar": '<input type="text" class="form-control current-input" id="avatar" name="avatar">',
 };
 
 const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
@@ -52,6 +53,6 @@ function getUserInput() {
   var education = document.getElementById("exp2").value;
   var contact_preference = document.getElementById("contact").value;
   var accommodations = document.getElementById("accom").value;
-  var avatar = none;
+  var avatar = 0;
 
 }

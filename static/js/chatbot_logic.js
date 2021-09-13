@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   let x = 0
-  let keyslist = ['full_name', 'email', 'phone', 'city', 'country', 'password1', 'password2', 'disc', 'area', 'type', 'exp', 'exp2', 'contact', 'accom']
+  let keyslist = ['full_name', 'email', 'phone', 'city', 'country', 'password1', 'password2', 'disc', 'area', 'type', 'exp', 'exp2', 'contact', 'accom', 'avatar']
   $('.chatbox').keypress(function (e) {
     var key = e.which;
     if (key == 13) // the enter key code
@@ -10,7 +10,7 @@ $(document).ready(function () {
 
       x ++
 
-      if (keyslist[x] == 'accom') {
+      if (keyslist[x] == 'avatar') {
       $(".chatbox").append($(submit).hide().fadeIn("fast"));
       } else {
         $(".current-input").removeClass("current-input").addClass("previous-input");
