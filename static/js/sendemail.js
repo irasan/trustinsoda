@@ -15,3 +15,7 @@ function sendMail(contactForm){
     );
     return false;
 }
+
+function newAlert() {
+    alert("If you have completed the form correctly you will receive a confirmation email shortly!")
+}
