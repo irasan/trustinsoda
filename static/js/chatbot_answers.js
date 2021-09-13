@@ -3,7 +3,7 @@ const labelList = {
   "full_name": '<p class="label">What is your full name?</p>',
   "email": '<p class="label">Nice name!<br>Now, what is your email address?</p>',
   "phone": '<p class="label">Great!<br>Next, we need your phone number</p>',
-  "city": '<p class="label">Where do you live? enter the city name</p>',
+  "city": '<p class="label">Where do you live? Enter the city name</p>',
   "country": '<p class="label">And that city is in which country?</p>',
   "password1": '<p class="label">Now, you need to type in a password for when you log in</p>',
   "password2": '<p class="label">Can you repeat that password please, just to make sure that we got it right</p>',
@@ -35,3 +35,28 @@ const inputList = {
 };
 
 const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
+
+function getUserInput() {
+  var data = [
+    {"full_name": document.getElementById("full_name").value},
+    {"email": document.getElementById("email").value},
+    {"phone": document.getElementById("phone").value},
+    {"city": document.getElementById("city").value},
+    {"country": document.getElementById("country").value},
+    {"password1": document.getElementById("password1").value},
+    {"password2": document.getElementById("password2").value},
+    {"discription": document.getElementById("disc").value},
+    {"sector": document.getElementById("area").value},
+    {"sector_other": document.getElementById("type").value},
+    {"experience": document.getElementById("exp").value},
+    {"education": document.getElementById("exp2").value},
+    {"contact_preference": document.getElementById("contact").value},
+    {"accommodations": document.getElementById("accom").value},
+  ]
+  
+  $.post( "/postmethod", {
+    javascript_data: data,
+  });
+
+};
+
