@@ -35,7 +35,7 @@ const inputList = {
   "avatar": '<input type="text" class="form-control current-input" id="avatar" name="avatar">',
 };
 
-const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
+const submit = '<button type="submit" class="btn btn-primary next-page mt-3 mb-5">Submit Registration!</button>'
 
 function getUserInput() {
 

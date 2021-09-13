@@ -181,3 +181,40 @@
 #contact-form {
     margin-bottom: 10%;
 }
+
+/* profiles */
+
+.profile-card {
+    width: 100%;
+    height: 620px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 120%;
+    background-color: #C3D6E7;
+    border: 1px solid black;
+}
+
+.profile-card img {
+    padding: 5%;
+    margin-top: 10px;
+    border-radius: 5%;
+    height: 15rem;
+}
+
+.list-group-flush {
+    text-align: left;
+}
+
+.cv {
+    border: 1px solid black;
+    border-radius: 5%;
+    margin-bottom: 20px;
+    background-color: #C3D6E7;
+}
+
+.cv img {
+    background-color: #EDE6F5;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5%;
+} 
