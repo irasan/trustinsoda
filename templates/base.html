@@ -1,91 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Put all dependancies here -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <!-- Bootstrap v 4.6 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <!-- Custom CSS-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <title>Document</title>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enable Recruitment</title>
+
+  <!-- reCaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <!-- Bootstrap v 4.6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- Custom CSS-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  <!-- EmailJS-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+  </script>
+  <!-- jquery for chatbot-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("user_1dqcfIzm6DuOVqpkLPFQu");
+    })();
+  </script>
 </head>
 
 <body>
 
-    <header>
-        <!-- Navbar here -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('employee_register') }}">Employee Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('employer_register') }}">Employer Sign Up</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  <header>
+    <div id="header" class="main-gradient text-left">
+      <a class="logo" href="{{ url_for('home') }}">
+        <h1>Enable</h1>
+      </a>
 
-        <!-- Example of linking pages (look for def function names in app.py) -->
-        <!-- <li><a href="{{ url_for('home') }}">Home</a></li> -->
-    </header>
+      <!-- Navbar here -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <span class="navbar-text text-dark font-weight-bold lead">
+          For differently abled people
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-right lead font-weight-bold" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('all_candidates') }}">All Candidates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+            </li>
+            {% if session.user %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home', _anchor='sign-up-box') }}">Sign Up</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+    </div>
+    </nav>
+  </header>
 
-    <section>
-      <!-- flash messages -->
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <div class="row">
-                <h4>{{ message }}</h4>
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+  <section>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row flashes">
+      <h4>{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
   </section>
 
-    <!-- This is the section where content of each page goes
+  <!-- This is the section where content of each page goes
     Container can be removed if needed -->
-    <main class="container">
-        {% block content %}
+  <main>
+    <div class="container">
+      {% block content %}
 
-        {% endblock %}
-    </main>
+      {% endblock %}
+    </div>
+  </main>
 
-    <footer>
-        <!-- Will there be any footer? -->
-    </footer>
+  <footer class="footer">
+    <div class="main-gradient">
+      <div class="row ">
+        <div class="col-sm-12 col-md-3 mt-3">
+          <ul id="foot-list">
+            <li>
+              <a href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li>
+              <a href="{{ url_for('about') }}">About</a>
+            </li>
+            <li>
+              <a href="{{ url_for('contact') }}">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-6 mt-3">
+          <div class="dev">
+            <ul class="list-inline foot-list">
+              <li class="list-inline-item">
+                <a href="https://github.com/irasan" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/iryna.jpg')}}"
+                    alt="Iryna gitHub profile picture" />
+                  <p class="dev-name">Iryna</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/CraigThomasson" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Craig</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/hartnetl" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/laura.jpg')}}"
+                    alt="github profile image for laura" />
+                  <p class="dev-name">Laura</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/rlopezba1" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Ruben</p>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/AwsSG" target="_blank" rel="noopener noreferrer">
+                  <img class="dev-icon circle" src="{{ url_for('static', filename='img/devs/github.png')}}"
+                    alt="github logo" />
+                  <p class="dev-name">Aws</p>
+                </a>
+              </li>
+            </ul>
 
-    <!-- Scripts here -->
-    <!-- Bootstrap JS-->
-<!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-md-3 mt-3">
+          <p class="cright">
+            &copy; copyright <br> Lighthouse Devs <br> 2021
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts here -->
+  <!-- Bootstrap JS-->
+  <!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
-    <!-- Custom JS scripts-->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/chatbot_answers.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/chatbot_logic.js') }}"></script>
+  <!-- Custom JS scripts-->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chatbot_answers.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chatbot_logic.js') }}"></script>
 </body>
 
 </html>

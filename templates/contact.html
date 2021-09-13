@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form id="contact-form" onsubmit="return sendMail(this);">
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="name" class="form-control" id="name" placeholder="John Smith" name="name">
+</div>
+<div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+</div>
+<div class="form-group">
+    <label for="subject">Subject</label>
+    <input type="text" class="form-control" id="subject" name="subject">
+</div>
+<div class="form-group">
+    <label for="info-area">Enter your message below :</label>
+    <textarea class="form-control" id="info-area" rows="3" name="message"></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Send message</button>
+</form>
+
+{% endblock %}

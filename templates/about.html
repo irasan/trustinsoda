@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <br>
-<div class="container-fluid about-image">
+<div class="container-fluid about-image rounded shadow p-3 mb-5">
     <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}"
         alt="two ladies working on a laptop in a coffee shop">
 </div>
@@ -21,7 +21,7 @@
     </p>
 </div>
 
-<div class="container-fluid about-image">
+<div class="container-fluid about-image rounded shadow p-3 mb-5">
     <img src="{{ url_for('static', filename='img/man-working.jpg') }}"
         alt="A man in a shirt and tie working in a coffee shop">
 </div>
@@ -39,7 +39,7 @@
 </div>
 
 <div class="container-fluid about-image">
-    <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}"
+    <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}" class="container-fluid rounded shadow p-3 mb-5"
         alt="two ladies working on a laptop in a coffee shop">
 </div>
 

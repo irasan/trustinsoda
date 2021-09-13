@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-center mb-5 mt-5">Candidates profile</h1>
+
+<div class="row cv">
+    <div class="col-12 col-md-6">
+        <h2 class="text-center pt-5">{{ candidate.full_name|title }}</h2>
+    </div>
+    <div class="col-12 col-md-6 text-center">
+        <img class="img-fluid" src="{{ candidate.avatar }}" alt="avatar">
+    </div>
+
+    <div class="col-12 mb-5">
+        <h4 class="text-center mt-4">Personal details</h4>
+        <p class="lead pl-3">
+            Phone: {{ candidate.phone }}<br>
+            Email: {{ candidate.email }}<br>
+            Location: {{ candidate.city|title }}, {{ candidate.country|title }}
+        </p>
+        <hr>
+        <h4 class="text-center mt-4">Experience</h4>
+        <p class="lead pl-3">
+            Description: {{ candidate.description }}<br>
+            Experience: {{ candidate.experience }}<br>
+            Education: {{ candidate.education }}
+        </p>
+        <hr>
+        <h4 class="text-center mt-4">Preferences</h4>
+        <p class="lead pl-3">
+            Sector: {% if candidate.sector is iterable and (candidate.sector is not string and candidate.sector is not mapping)%}
+            {% for item in candidate.sector %}{{ item }} &middot; {% endfor %}
+            {% else %} {{ candidate.sector }}
+            {% endif %}<br>
+            Contact Preference: {% if candidate.contact_preference is iterable and (candidate.contact_preference is not string and candidate.contact_preference is not mapping)%}
+            {% for item in candidate.contact_preference %}{{ item }} &middot; {% endfor %}
+            {% else %} {{ candidate.contact_preference }}{% endif %}<br>
+            Accommodations: {{ candidate.accommodations }}
+        </p>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="{{ url_for('all_candidates') }}" class="btn btn-info btn-lg mt-3 mb-5">
+        <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <span>Go back</span>
+    </a>
+</div>
+
+{% endblock %}

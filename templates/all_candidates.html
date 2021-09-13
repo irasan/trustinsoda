@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    {% for candidate in all_candidates %}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="profile-card mb-5">
+            <a href="{{ url_for('candidate_details', username=candidate.email) }}">
+                {% if candidate.avatar|length %}
+                <img src="{{ candidate.avatar }}" class="img-fluid" class="card-img-top"
+                    alt="avatar">
+                {% else %}
+                <img src="{{ candidate.avatar }}" class="img-fluid" class="card-img-top"
+                    alt="avatar">
+                {% endif %}
+            </a>
+            <div class="card-body">
+                <h4 class="card-title text-uppercase">{{ candidate.full_name }}</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Sector:
+                        {% if candidate.sector is iterable and (candidate.sector is not string and candidate.sector is not mapping)%}
+                        {% for item in candidate.sector %}{{ item }} &middot; {% endfor %}
+                        {% else %} {{ candidate.sector }}
+                        {% endif %}</li>
+                    <li class="list-group-item">City: {{ candidate.city|title }}</li>
+                    <li class="list-group-item">Country: {{ candidate.country|title }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
