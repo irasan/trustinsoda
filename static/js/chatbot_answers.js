@@ -31,32 +31,27 @@ const inputList = {
   "exp": '<input type="text" class="form-control current-input" id="work-experience-box" required>',
   "exp2": '<input type="text" class="form-control current-input" id="other-experience-box" required>',
   "contact": '<input type="text" class="form-control current-input" id="contact" required>',
-  "accom": '<textarea class="form-control current-input" id="accommodations" name="accommodations" rows="3"></textarea>',
+  "accom": '<textarea class="form-control current-input" id="accommodations" name="accommodations" rows="3"></textarea>', 
 };
 
 const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
 
 function getUserInput() {
-  var data = [
-    {"full_name": document.getElementById("full_name").value},
-    {"email": document.getElementById("email").value},
-    {"phone": document.getElementById("phone").value},
-    {"city": document.getElementById("city").value},
-    {"country": document.getElementById("country").value},
-    {"password1": document.getElementById("password1").value},
-    {"password2": document.getElementById("password2").value},
-    {"discription": document.getElementById("disc").value},
-    {"sector": document.getElementById("area").value},
-    {"sector_other": document.getElementById("type").value},
-    {"experience": document.getElementById("exp").value},
-    {"education": document.getElementById("exp2").value},
-    {"contact_preference": document.getElementById("contact").value},
-    {"accommodations": document.getElementById("accom").value},
-  ]
-  
-  $.post( "/postmethod", {
-    javascript_data: data,
-  });
 
-};
+  var full_name = document.getElementById("full_name").value;
+  var email = document.getElementById("email").value;
+  var phone = document.getElementById("phone").value;
+  var city = document.getElementById("city").value;
+  var country = document.getElementById("country").value;
+  var password1 = document.getElementById("password1").value;
+  var password2 = document.getElementById("password2").value;
+  var discription = document.getElementById("disc").value;
+  var sector = document.getElementById("area").value;
+  var sector_other = document.getElementById("type").value;
+  var experience = document.getElementById("exp").value;
+  var education = document.getElementById("exp2").value;
+  var contact_preference = document.getElementById("contact").value;
+  var accommodations = document.getElementById("accom").value;
+  var avatar = none;
 
+}

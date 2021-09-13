@@ -5,6 +5,7 @@ from flask import (
 from functools import wraps
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
+import json
 if os.path.exists("env.py"):
     import env
 
@@ -49,32 +50,41 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/chatbot")
+@app.route("/chatbot", methods=["GET", "POST"])
 def chatbot():
-    register = {
-        "full_name": request.form.get("full_name").lower(),
-        "password": generate_password_hash(
-            request.form.get("password1")),
-        "email": request.form.get("email"),
-        "phone": request.form.get("phone"),
-        "city": request.form.get("city").lower(),
-        "country": request.form.get("country").lower(),
-        "description": request.form.get("description"),
-        "sector": request.form.getlist("sector"),
-        "experience": request.form.get("experience1"),
-        "education": request.form.get("education1"),
-        "contact_preference": request.form.getlist("contact_preference"),
-        "accommodations": request.form.get("accommodations"),
-        "avatar": request.form.get("avatar")
-    }
-    mongo.db.jobseekers.insert_one(register)
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.jobseekers.find_one(
+            {"email": request.form.get("email")})
+
+        if existing_user:
+            flash("Account with such an email is already registered")
+            return redirect(url_for("employee_register"))
+
+        if (request.form.get("password1") == request.form.get("password2")):
+            register = {
+                "full_name": request.form.get("full_name").lower(),
+                "password": generate_password_hash(
+                    request.form.get("password1")),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "city": request.form.get("city").lower(),
+                "country": request.form.get("country").lower(),
+                "description": request.form.get("description"),
+                "sector": request.form.getlist("sector"),
+                "sector_other": request.form.get("sector_other"),
+                "experience": request.form.get("experience1"),
+                "education": request.form.get("education1"),
+                "contact_preference": request.form.getlist("contact_preference"),
+                "accommodations": request.form.get("accommodations"),
+                "avatar": request.form.get("avatar")
+            }
+            mongo.db.jobseekers.insert_one(register)
+        session["user"] = request.form.get("email")
+        flash("Registration Successful!")
+        return redirect(url_for("employee_profile", username=session["user"]))
+
     return render_template("chatbot.html")
-
-
-@app.route('/postmethod', methods = ['POST'])
-def get_post_javascript_data():
-    jsdata = request.form['javascript_data']
-    return json.loads(jsdata)[0]
 
 
 @app.route("/employee_register", methods=["GET", "POST"])
