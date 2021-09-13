@@ -5,8 +5,14 @@
     <div class="col-12 col-md-6">
         <h1 class="text-center mt-3 mb-3">{{ user.full_name|title }}'s profile</h1>
     </div>
-    <div class="col-12 col-md-6">
-        <img class="img-fluid" src="{{ user.avatar }}" alt="avatar">
+    <div class="col-12 col-md-6 profile">
+      {% if user.avatar|length %}
+      <img src="{{ user.avatar }}" class="img-fluid" class="card-img-top"
+          alt="avatar">
+      {% else %}
+      <img src="../static/images/no-photo.png" class="img-fluid" class="card-img-top"
+          alt="avatar">
+      {% endif %}
     </div>
 </div>
 
@@ -60,31 +66,31 @@
       </div>
 
       <p>Have you work experience in this area?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="yes-btn-1" name="yes-btn-1" class="custom-control-input">
-        <label class="custom-control-label" for="yes-btn-1">Yes</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="yes-radio-experience" name="experience" class="custom-control-input">
+        <label class="custom-control-label" for="yes-radio-experience">Yes</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="no-btn-1" name="no-btn-1" class="custom-control-input">
-        <label class="custom-control-label" for="no-btn-1">No</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="no-radio-experience" name="experience" class="custom-control-input">
+        <label class="custom-control-label" for="no-radio-experience">No</label>
       </div>
       <div class="form-group">
         <label for="work-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="work-experience-box" name="experience" value="{{user.experience}}">
+        <input type="text" class="form-control" id="work-experience-box" name="experience1" value="{{user.experience}}">
       </div>
 
       <p>Have you other training or experiences relevant to this job?</p>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="yes-btn-2" name="yes-btn-2" class="custom-control-input">
-        <label class="custom-control-label" for="yes-btn-2">Yes</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="yes-radio-education" name="education" class="custom-control-input">
+        <label class="custom-control-label" for="yes-radio-education">Yes</label>
       </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="no-btn-2" name="no-btn-2" class="custom-control-input">
-        <label class="custom-control-label" for="no-btn-2">No</label>
+      <div class="custom-control custom-radio custom-control-inline form-control-lg">
+        <input type="radio" id="no-radio-education" name="education" class="custom-control-input">
+        <label class="custom-control-label" for="no-radio-education">No</label>
       </div>
       <div class="form-group">
         <label for="other-experience-box">Enter experience below:</label>
-        <input type="text" class="form-control" id="other-experience-box" name="education" value="{{user.education}}">
+        <input type="text" class="form-control" id="other-experience-box" name="education1" value="{{user.education}}">
       </div>
 
       <hr>

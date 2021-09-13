@@ -51,6 +51,23 @@ def about():
 
 @app.route("/chatbot")
 def chatbot():
+    register = {
+        "full_name": request.form.get("full_name").lower(),
+        "password": generate_password_hash(
+            request.form.get("password1")),
+        "email": request.form.get("email"),
+        "phone": request.form.get("phone"),
+        "city": request.form.get("city").lower(),
+        "country": request.form.get("country").lower(),
+        "description": request.form.get("description"),
+        "sector": request.form.getlist("sector"),
+        "experience": request.form.get("experience1"),
+        "education": request.form.get("education1"),
+        "contact_preference": request.form.getlist("contact_preference"),
+        "accommodations": request.form.get("accommodations"),
+        "avatar": request.form.get("avatar")
+    }
+    mongo.db.jobseekers.insert_one(register)
     return render_template("chatbot.html")
 
 
@@ -65,10 +82,6 @@ def employee_register():
             flash("Account with such an email is already registered")
             return redirect(url_for("employee_register"))
 
-        sector = request.form.getlist("sector")
-        if sector == "other":
-            sector = request.form.get("sector_other")
-
         if (request.form.get("password1") == request.form.get("password2")):
             register = {
                 "full_name": request.form.get("full_name").lower(),
@@ -79,7 +92,8 @@ def employee_register():
                 "city": request.form.get("city").lower(),
                 "country": request.form.get("country").lower(),
                 "description": request.form.get("description"),
-                "sector": sector,
+                "sector": request.form.getlist("sector"),
+                "sector_other": request.form.getlist("sector_other"),
                 "experience": request.form.get("experience1"),
                 "education": request.form.get("education1"),
                 "contact_preference": request.form.getlist("contact_preference"),
@@ -294,8 +308,8 @@ def employee_update(username):
                                                "country": str(country).strip("(,')"),
                                                "sector": str(sector).strip("( , ' )"),
                                                "description": str(description).strip("( , ' )"),
-                                               "experience": str(experience).strip("( , ' )"),
-                                               "education": str(education).strip("( , ' )"),
+                                               "experience1": str(experience).strip("( , ' )"),
+                                               "education1": str(education).strip("( , ' )"),
                                                "contact_preference": str(contact_preference).strip("( , ' )"),
                                                "accommodations": str(accommodations).strip("( , ' )")}})
             flash("Your Profile Was Successfully Updated")
@@ -306,7 +320,7 @@ def employee_update(username):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
