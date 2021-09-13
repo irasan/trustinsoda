@@ -49,6 +49,11 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/chatbot")
+def chatbot():
+    return render_template("chatbot.html")
+
+
 @app.route("/employee_register", methods=["GET", "POST"])
 def employee_register():
     if request.method == "POST":
