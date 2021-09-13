@@ -242,6 +242,13 @@ def all_candidates():
     return render_template(
         "all_candidates.html", all_candidates=all_candidates)
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    all_candidates = list(mongo.db.jobseekers.find({"$text": {"$search": query}}))
+    return render_template("all_candidates.html", all_candidates=all_candidates)
+
+
 
 @app.route("/employer_update/<username>", methods=["GET", "POST"])
 @login_required
