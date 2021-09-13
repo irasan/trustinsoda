@@ -36,12 +36,27 @@ const inputList = {
 
 const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
 
-// $.ajax({
-//   method: "POST",
-//   url: "postmethod",
-//   dataType: 'text',
-//   data: {text: textBox},
-//   success: function(result) {
-//       $('body').html(result)
-//   }
-// });
+function getUserInput() {
+  var data = [
+    {"full_name": document.getElementById("full_name").value},
+    {"email": document.getElementById("email").value},
+    {"phone": document.getElementById("phone").value},
+    {"city": document.getElementById("city").value},
+    {"country": document.getElementById("country").value},
+    {"password1": document.getElementById("password1").value},
+    {"password2": document.getElementById("password2").value},
+    {"discription": document.getElementById("disc").value},
+    {"sector": document.getElementById("area").value},
+    {"sector_other": document.getElementById("type").value},
+    {"experience": document.getElementById("exp").value},
+    {"education": document.getElementById("exp2").value},
+    {"contact_preference": document.getElementById("contact").value},
+    {"accommodations": document.getElementById("accom").value},
+  ]
+  
+  $.post( "/postmethod", {
+    javascript_data: data,
+  });
+
+};
+

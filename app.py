@@ -71,6 +71,12 @@ def chatbot():
     return render_template("chatbot.html")
 
 
+@app.route('/postmethod', methods = ['POST'])
+def get_post_javascript_data():
+    jsdata = request.form['javascript_data']
+    return json.loads(jsdata)[0]
+
+
 @app.route("/employee_register", methods=["GET", "POST"])
 def employee_register():
     if request.method == "POST":
