@@ -1,14 +1,10 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 # team name
-Click [here](...) to view the live web site 
+Click [here](https://upsidedownrecruitment.herokuapp.com/) to view the live web site 
 
 
 <hr>
 
-## UX
-
-## Strategy
-<br>
 
 ## Goals
 To create a recruitment site for people with down syndrome.
@@ -16,7 +12,7 @@ Currently in Ireland there is a very small number of people with down syndrome i
 We aim to create a site that gives them a place to find work and employers a place to find and recruit them.
 As our MVP we aim to:
 * Create an easy to navigate web site for job seekers and employers
-* Create a site that allows possible access arrangements to the work place and the interview to be arrange.
+* Create a site that allows possible access arrangements to the work place and the interview to be arranged.
 
 
 ### To achieve these goals I will need to:
@@ -27,7 +23,7 @@ As our MVP we aim to:
 * The users will:
     * Be looking to find work
     * Be able to quickly navigate the site and create a simple profile
-    * be able to add any access arngments they may need.
+    * be able to add any extra arrangments they may need.
 
 ## Wireframes for Original Concept
 
@@ -57,7 +53,7 @@ As our MVP we aim to:
 
 ## Load Screen/home page
 
-<img src="document/final-home-page.PNG" width="450" height="250" alt="image of live site title acreen/about section">
+<img src="documents/final-home-page.png" width="450" height="250" alt="image of live site title acreen/about section">
 
 The user can see what services are offered by the narrator in the About section, and can see clear navigation options to the Samples section and the Contact section. There is also a call to action at the end of the About section, so the user can be directed to the Contact page. This will make it easier for first time users to navigate the page. The call to action will also help returning users who may be comparing narrators, to quickly navigate to the Contact page.
 * The title and subtitle make it clear that the site is for audio book narration and the About section clearly states the services offered
@@ -67,23 +63,24 @@ The user can see what services are offered by the narrator in the About section,
 
 ## sign in page
 
-<img src="" width="450" height="250" alt="image of sample section of the web site">
+<img src="documents/sign-in.png" width="450" height="250" alt="image of sample section of the web site">
 
-add info about sign in page:
+There are separate sign in pages for future employees and employers, but both look identical.
  
 
 ## Contact Section 
 
-<img src="" width="450" height="250" alt="image of contact section of the web site">
+<img src="documents/contact.png" width="450" height="250" alt="image of contact section of the web site">
 
  The form is clearly labelled and allows the user to leave all relevant information.
+ An alert is generated when the form is filled in, and if a valid email is used the user gets a confirmation email.
 
 
 ## Footer
 
-<img src="" width="450" height="auto" alt="image of site footer">
+<img src="documents/footer.png" width="450" height="auto" alt="image of site footer">
 
-*the footer contains......
+The footer contains 3 page links to the home, about and contact pages so information is easily accessed by users. Links to all the github pages of the developers of this project.
 
 ## Deployment
 
@@ -109,15 +106,8 @@ This project was deployed to git hub pages.
 * As evidenced above we also tested on multiple view ports
 * Links in nav bar where all tested to ensure they link to the correct page sections
 * Check form to ensure it validates 
+* Ran through lighthouse for accessibility reading
 
-## Validation
-
-* CSS was ran through (Jigsaw) validator and has no errors: results [here](....)
-* HTML was ran through W3C validator with no issues: results <a href="">here</a>
-
-## Lighthouse Scores
-
-<img src="documents/light-house-scores.PNG" width="450" height="auto" alt="image of lighthouse results">
 
 ## Technologies used
 HTML, CSS. python, java script, flask.
