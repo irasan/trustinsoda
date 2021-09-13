@@ -18,6 +18,8 @@ $(document).ready(function () {
         $(".chatbox").append($(labelList[keyslist[x]]).hide().fadeIn("fast"));
         
         $(".chatbox").append($(inputList[keyslist[x]]).hide().fadeIn("fast"));
+
+        $(".current-input").focus();
       }
         
       $("html, body").animate(
