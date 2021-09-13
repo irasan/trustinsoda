@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <br>
-<div class="container-fluid about-image rounded shadow p-3 mb-5">
-    <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}"
+<div class="container about-image">
+    <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}" class="rounded shadow p-3 mb-5"
         alt="two ladies working on a laptop in a coffee shop">
 </div>
 
-<div class="container-fluid about-info">
+<div class="container about-info">
     <h2>Who we are</h2>
     <p>
-        Here at Upside Down Recruiters we aim to make the workplace a more welcoming and accessible environment.
+        Here at Enable we aim to make the workplace a more welcoming and accessible environment.
         People with disabilities are more likely to be unemployed and face more difficulty than the average person when
         trying to enter the workforce.
         We hope to work with companies and other recuitment agencies to change this.
@@ -21,33 +21,38 @@
     </p>
 </div>
 
-<div class="container-fluid about-image rounded shadow p-3 mb-5">
-    <img src="{{ url_for('static', filename='img/man-working.jpg') }}"
+<div class="container about-image">
+    <img src="{{ url_for('static', filename='img/man-working.jpg') }}" class="rounded shadow p-3 mb-5"
         alt="A man in a shirt and tie working in a coffee shop">
 </div>
 
-<div class="container-fluid about-info">
+<div class="container about-info">
     <h2>Who you are</h2>
     <p>
         As a user of our website you're either a person with Down Syndrome looking for help finding a job,
-        or you are an employer looking to hire someone.
-        As a job seeker all you need to do is follow <a href=#>this link</a> to sign up, enter the details via the form
-        or chatbot and this allows potential employers to find you. It's that simple!
-        As an employer you need to register <a href=#>here</a> and you'll be able to view profiles of people looking to
+        or you are an employer looking to hire someone.<br>
+        As a job seeker all you need to do is follow <a href="{{ url_for('employee_register') }}">this link</a> to sign up, enter the details via the form
+        or chatbot and this allows potential employers to find you. It's that simple!<br>
+        As an employer you need to register <a href="{{ url_for('employer_register') }}">here</a> and you'll be able to view profiles of people looking to
         work.
     </p>
 </div>
 
-<div class="container-fluid about-image">
-    <img src="{{ url_for('static', filename='img/ladies-working.jpg') }}" class="container-fluid rounded shadow p-3 mb-5"
-        alt="two ladies working on a laptop in a coffee shop">
+<div class="container about-image">
+    <img src="{{ url_for('static', filename='images/flower.jpg') }}" class="container rounded shadow p-3 mb-5"
+        alt="A yellow flower against a bright blue sky">
 </div>
 
-<div class="container-fluid about-info">
+<div class="container about-info">
     <h2>Why we need to work together</h2>
     <p>
-        Some facts about the misconceptions about people with Down Syndrome, and why it's important
-        to make the workplace more accessible to all.
+        In Ireland less than 5% of adults with Down Syndrome secure employment. There
+        is a misconception about people with Down Syndrome and their inability to work, which we're hoping to change.
+        We're aiming to simplify the application process and by partnering with companies and recruitment companies, get more
+        people to the workforce. <br><br>
+        People with Down Syndrome can be an excellent addition to your team, and you just need to be willing to give them
+        a chance. You can contact us for more information, or sign up today and get in touch with the individuals themselves
+        to see what they have to offer!<br>
     </p>
 
 </div>

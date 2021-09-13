@@ -1,320 +1,183 @@
-/* General */
-body {
-    font-family: Helvetica, Arial, sans-serif;
-    color: black;
-    background-image: linear-gradient(to right, #EDE6F5, #E8C5D1);
-}
+	/* General */	
+    body {	
+        font-family: Helvetica, Arial, sans-serif;	
+        color: black;	
+        background-image: linear-gradient(to right, #EDE6F5, #E8C5D1);	
+        font-size: 1.5rem;
+    }	
 
-.main-gradient {
-    background-image: linear-gradient(to right, #C3D6E7, #DCC3E8);
-}
-
-a {
-    text-decoration: none;
-}
-
-hr {
-    width: 80%;
-    border-top: 1px solid #EDE6F5;
-}
-
-#tag {
-    margin-bottom: 0;
-}
-
-/* flash messages  */
-.flashes {
-    background-color: black;
-}
-
-.flashes h4 {
-    line-height: 2;
-    color: white;
-    margin: 0 auto;
-}
-
-#reg-submit {
-    margin: 0 auto;
-}
-
-/* header */
-.logo {
-    color: black;
-}
-
-.logo:hover {
-    text-decoration: none;
-    color: darkslateblue;
-}
-
-header h1 {
-    font-size: 300%;
-    font-weight: bold;
-    margin-left: 20px;
-    padding-top: 3vh;
-    margin-bottom: 0;
-}
-
-/* footer */
-
-.footer {
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-}
-
-.space-2 {
-    height: 10vh;
-}
-
-footer a {
-    color: black;
-}
-
-.dev {
-    text-align: center;
-    display: inline;
-}
-
-.dev-icon {
-    width: 60px;
-    height: auto;
-    border-radius: 50%;
-    background-color: black;
-}
-
-.dev-icon:hover {
-    border: 5px solid #007bff;
-}
-
-.dev-name {
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-@media screen and (max-width: 577px) {
-    .dev-name {
-        display: none;
-    }
-}
-
-#foot-list {
-    list-style-type: none;
-    text-decoration: none;
-}
-
-#foot-list>li {
-    margin: 0;
-    padding: 0;
-    line-height: 1.5rem;
-}
-
-.cright {
-    text-align: center;
-    margin: 0 auto;
-}
-
-/* home page */
-
-.container {
-    margin-top: 1rem;
-}
-
-.home-cards {
-    text-align: center;
-
-}
-
-.space {
-    height: 5vh;
-}
-
-#hero {
-    width: 70%;
-    border-radius: 5px;
-    margin: 2% auto 5% auto;
-    background-color: #bedfee;
-}
-
-#intro-contents {
-    text-align: center;
-}
-
-/* cards */
-
-.card {
-    width: 18rem;
-    text-align: center;
-    font-weight: bold;
-    font-size: 160%;
-    background-color: #C3D6E7;
-    margin: 19px auto;
-    padding: 5%;
-    border: 1px solid black;
-}
-
-/* images */
-
-#image-box {
-    margin-top: 5%;
-}
-
-.img-fluid {
-    max-width: 85%;
-    height: auto;
-    background-color: #DCC3E8;
-    border: 1px solid black;
-}
-
-/* ABOUT PAGE */
-
-.about-image img {
-    height: 100%;
-    width: 100%;
-}
-
-.about-info {
-    text-align: center;
-}
-
-/* EMPLOYEE SIGN UP PAGE */
-
-form {
-    border: 1px solid rgb(41, 37, 37);
-    margin: 10px 0;
-    padding: 1rem;
-}
-
-.next-page {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* login */
-
-.login-box {
-    position: relative;
-    margin: 0 auto;
-}
-
-.login-box h2 {
-    text-align: center;
-}
-
-/* 404 */
-
-.card-404 {
-    width: 80%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 160%;
-    background-color: #C3D6E7;
-    color: black;
-    margin: 19px auto;
-    border: 1px solid black;
-}
-
-.card-404 a {
-    color: white;
-    font-size: 2rem;
-}
-
-.btn-404 {
-    background-color: #C3D6E7;
-}
-
-
-/* Candidates style */
-
-.font-weight-normal {
-    font-weight: 500 !important;
-}
-
-.w-25 {
-    width: 25% !important;
-}
-
-.text-muted {
-    color: #b2b2b2 !important;
-}
-
-.mr-1, .mx-1 {
-    margin-right: 0.625rem !important;
-}
-
-.box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 500px;
-  }
-
-@media screen and (max-width: 640px)  {
-    .card-404 {
-        width: 90%;
+    h2 {
+        font-size: 3rem;
     }
 
-    .dev-icon {
-        width: 30px;
+    .main-gradient {	
+        background-image: linear-gradient(to right, #C3D6E7, #DCC3E8);	
+    }	
+    a {	
+        text-decoration: none;	
+    }	
+    hr {	
+        width: 80%;	
+        border-top: 1px solid #EDE6F5;	
+    }	
+    #tag {	
+        margin-bottom: 0;	
+    }	
+    /* flash messages  */	
+    .flashes {	
+        background-color: black;	
+    }	
+    .flashes h4 {	
+        line-height: 2;	
+        color: white;	
+        margin: 0 auto;	
+    }	
+    #reg-submit {	
+        margin: 0 auto;	
+    }	
+    /* header */	
+    .logo {	
+        color: black;	
+    }	
+    .logo:hover {	
+        text-decoration: none;	
+        color: darkslateblue;	
+    }	
+    header h1 {	
+        font-size: 300%;	
+        font-weight: bold;	
+        margin-left: 20px;	
+        padding-top: 3vh;	
+        margin-bottom: 0;	
+    }	
+    /* footer */	
+    .footer {	
+        bottom: 0;	
+        width: 100%;	
+        height: 40px;
+        font-size: 1rem;	
+    }	
+    .space-2 {	
+        height: 10vh;	
+    }	
+    footer a {	
+        color: black;	
+    }	
+    .dev {	
+        text-align: center;	
+        display: inline;	
+    }	
+    .dev-icon {	
+        width: 60px;	
+        height: auto;	
+        border-radius: 50%;	
+        background-color: black;	
+    }	
+    .dev-icon:hover {	
+        border: 5px solid #007bff;	
+    }	
+    .dev-name {	
+        text-transform: uppercase;	
+        text-decoration: none;	
+    }	
+    @media screen and (max-width: 577px) {	
+        .dev-name {	
+            display: none;	
+        }	
+    }	
+    #foot-list {	
+        list-style-type: none;	
+        text-decoration: none;	
+    }	
+    #foot-list>li {	
+        margin: 0;	
+        padding: 0;	
+        line-height: 1.5rem;	
+    }	
+    .cright {	
+        text-align: center;	
+        margin: 0 auto;	
+    }	
+    /* home page */	
+    .container {	
+        margin-top: 1rem;	
+    }	
+    .home-cards {	
+        text-align: center;	
+        margin-top: 10%;	
+    }	
+    button {	
+        border-radius: 5px;	
+        border: 1px groove rgb(182, 182, 197);	
+    }	
+    .space {	
+        height: 5vh;	
+    }	
+    #hero {	
+        width: 70%;	
+        border-radius: 5px;	
+        margin: 2% auto 5% auto;	
+        background-color: #bedfee;	
+    }	
+    #intro-contents {	
+        text-align: center;	
+    }	
+    /* cards */	
+    .card {	
+        width: 18rem;	
+        text-align: center;	
+        font-weight: bold;	
+        font-size: 130%;	
+        background-color: #C3D6E7;	
+        margin: 19px auto;	
+        padding: 5%;	
+        border: 1px groove #9fc4e4;	
+    }	
+    /* images */	
+    #image-box {	
+        margin-top: 5%;	
+    }	
+    .img-fluid {	
+        max-width: 85%;	
+        height: auto;	
+        background-color: #DCC3E8;	
+        border: 1px groove #dbbce9;	
+    }	
+    /* ABOUT PAGE */	
+    .about-image img {	
+        height: 60%;	
+        width: 70%;	
+        position: relative;	
+        left: 50%;	
+        transform: translateX(-50%);	
+    }	
+    .about-info {	
+        text-align: center;	
+    }	
+    /* EMPLOYEE SIGN UP PAGE */	
+    form {	
+        border: 1px solid rgb(41, 37, 37);	
+        margin: 10px 0;	
+        padding: 1rem;	
+    }	
+
+    form button {
+        margin: 0 auto;
     }
-}
-/* CONTACT PAGE */
+
+    .next-page, form button {	
+        position: relative;	
+        left: 50%;	
+        transform: translateX(-50%);	
+    }	
+    /* login */	
+    .login-box {	
+        position: relative;	
+        margin: 0 auto;	
+    }	
+    
+/* contact page */
 
 #contact-form {
-    margin: 5% 0;
-    border-radius: 10px;
-}
-
-#contact-form button{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* profiles */
-
-.profile-card {
-    width: 100%;
-    height: 620px;
-    margin: 0 auto;
-    text-align: center;
-    font-weight: bold;
-    font-size: 160%;
-    background-color: #C3D6E7;
-    border: 1px solid black;
-}
-
-.profile-card img {
-    padding: 5%;
-    margin-top: 10px;
-    border-radius: 5%;
-    height: 15rem;
-}
-
-.list-group-flush {
-    text-align: left;
-}
-
-.cv {
-    border: 1px solid black;
-    border-radius: 5%;
-    margin-bottom: 20px;
-    background-color: #C3D6E7;
-}
-
-.cv img {
-    background-color: #EDE6F5;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5%;
-    max-width: 60%;
-}
-
-.profile {
-    text-align: center;
-}
-
-.profile img {
-    max-width: 60%;
+    margin-bottom: 10%;
 }
