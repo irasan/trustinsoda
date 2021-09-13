@@ -1,5 +1,5 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-# team name
+# Lighthouse Devs
 Click [here](https://upsidedownrecruitment.herokuapp.com/) to view the live web site 
 
 
