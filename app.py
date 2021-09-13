@@ -294,11 +294,12 @@ def employee_update(username):
             phone = request.form.get("phone")
             city = request.form.get("city").lower()
             country = request.form.get("country").lower()
-            sector = request.form.get("sector")
+            sector = request.form.getlist("sector")
+            sector_other = request.form.get("sector_other")
             description = request.form.get("description")
-            experience = request.form.get("experience")
-            education = request.form.get("education")
-            contact_preference = request.form.get("contact_preference")
+            experience = request.form.get("experience1")
+            education = request.form.get("education1")
+            contact_preference = request.form.getlist("contact_preference")
             accommodations = request.form.get("accommodations")
 
             mongo.db.jobseekers.update_one(
@@ -306,11 +307,12 @@ def employee_update(username):
                                                "phone": str(phone).strip("( , ' )"),
                                                "city": str(city).strip("( , ' )"),
                                                "country": str(country).strip("(,')"),
-                                               "sector": str(sector).strip("( , ' )"),
+                                               "sector": sector,
+                                               "sector_other": str(sector_other).strip("( , ' )"),
                                                "description": str(description).strip("( , ' )"),
-                                               "experience1": str(experience).strip("( , ' )"),
-                                               "education1": str(education).strip("( , ' )"),
-                                               "contact_preference": str(contact_preference).strip("( , ' )"),
+                                               "experience": str(experience).strip("( , ' )"),
+                                               "education": str(education).strip("( , ' )"),
+                                               "contact_preference": contact_preference,
                                                "accommodations": str(accommodations).strip("( , ' )")}})
             flash("Your Profile Was Successfully Updated")
             return redirect(url_for(

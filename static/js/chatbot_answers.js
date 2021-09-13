@@ -3,7 +3,7 @@ const labelList = {
   "full_name": '<p class="label">What is your full name?</p>',
   "email": '<p class="label">Nice name!<br>Now, what is your email address?</p>',
   "phone": '<p class="label">Great!<br>Next, we need your phone number</p>',
-  "city": '<p class="label">Where do you live? enter the city name</p>',
+  "city": '<p class="label">Where do you live? Enter the city name</p>',
   "country": '<p class="label">And that city is in which country?</p>',
   "password1": '<p class="label">Now, you need to type in a password for when you log in</p>',
   "password2": '<p class="label">Can you repeat that password please, just to make sure that we got it right</p>',
@@ -35,3 +35,13 @@ const inputList = {
 };
 
 const submit = '<button type="submit" class="btn btn-primary next-page">Submit Registration!</button>'
+
+// $.ajax({
+//   method: "POST",
+//   url: "postmethod",
+//   dataType: 'text',
+//   data: {text: textBox},
+//   success: function(result) {
+//       $('body').html(result)
+//   }
+// });
